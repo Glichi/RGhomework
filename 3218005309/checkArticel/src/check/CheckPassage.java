@@ -109,7 +109,7 @@ public class CheckPassage {
 		Scanner scanner=new Scanner(System.in);
 		String originPath=scanner.nextLine();  //"E:\学习\软件工程\test\orig.txt";
 		System.out.println("\n抄袭文本路径：");
-
+		String copyPath=scanner.nextLine();  //"E:\学习\软件工程\test\orig_0.8_add.txt";  orig_0.8_del  orig_0.8_dis_1  orig_0.8_dis_10  orig_0.8_dis_15
 		System.out.println();
 		// 原文本
 		ArrayList<String> origin=getArticle(originPath);  //得到段落数组
@@ -123,7 +123,7 @@ public class CheckPassage {
 			}
 		}
 		
-
+		checkOne(originPath, dictionary, copyPath, fileWrite);
 		
 		scanner.close();
 		fileWrite.close();
