@@ -12,23 +12,28 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class CheckPassage {
-	//ÎÄ±¾ÌØÕ÷(Õë¶ÔÒ»¶ÎÂä)
+	//æ–‡æœ¬ç‰¹å¾(é’ˆå¯¹ä¸€æ®µè½)
 	public static List<String> getCoupleWords(String paragraph) {
 		List<String> coupleWordsList = new ArrayList<String>();
-		String[] wordsList = paragraph.split("");
-		String words = "";
-		for (int i = 0; i < wordsList.length-1; i++) {
-			words = wordsList[i]+wordsList[i+1];
-			coupleWordsList.add(words);
+		try {
+			String[] wordsList = paragraph.split("");
+			String words = "";
+			for (int i = 0; i < wordsList.length-1; i++) {
+				words = wordsList[i]+wordsList[i+1];
+				coupleWordsList.add(words);
+			}
+		} catch(Exception e) {
+			System.out.println("è·¯å¾„å‡ºé”™ï¼Œæ“ä½œå¤±è´¥");
+			System.exit(0);
 		}
 		return coupleWordsList;
 	}
-	// »ñÈ¡ÎÄÕÂ£¨´¿ÎÄ×Ö£©
+	// è·å–æ–‡ç« ï¼ˆçº¯æ–‡å­—ï¼‰
 	public static ArrayList<String> getArticle(String path)throws IOException {
-		ArrayList<String> res=new ArrayList<String>();  //¶ÎÂäÇĞ·Ö
-		StringBuilder sb=new StringBuilder();  //Æ´½Ó¶ÁÈ¡µÄÄÚÈİ
-		String temp1=null;  //ÁÙÊ±±äÁ¿£¬´æ´¢sbÃ»ÓĞ³ıÈ¥±êµã·ûºÅµÄÄÚÈİ£¨Ö»³ıÈ¥¿Õ¸ñ£©
-		String temp=null; //ÁÙÊ±±äÁ¿£¬´æ´¢sbÈ¥³ı¿Õ¸ñ²¢ÇÒÈ¡³ö±êµã·ûºÅµÄÄÚÈİ
+		ArrayList<String> res=new ArrayList<String>();  //æ®µè½åˆ‡åˆ†
+		StringBuilder sb=new StringBuilder();  //æ‹¼æ¥è¯»å–çš„å†…å®¹
+		String temp1=null;  //ä¸´æ—¶å˜é‡ï¼Œå­˜å‚¨sbæ²¡æœ‰é™¤å»æ ‡ç‚¹ç¬¦å·çš„å†…å®¹ï¼ˆåªé™¤å»ç©ºæ ¼ï¼‰
+		String temp=null; //ä¸´æ—¶å˜é‡ï¼Œå­˜å‚¨sbå»é™¤ç©ºæ ¼å¹¶ä¸”å–å‡ºæ ‡ç‚¹ç¬¦å·çš„å†…å®¹
 		try {
 			BufferedReader reader=new BufferedReader(new FileReader(new File(path)));
 			int ch=0;
@@ -36,38 +41,38 @@ public class CheckPassage {
 				temp1=sb.toString().trim().replaceAll("\\s*", "");
 				temp=temp1.replaceAll("[\\pP\\p{Punct}]", "");
 				if((char)ch == '\n') {
-					//ÅĞ¶ÏÊÇ·ñ´æÔÚ¿Õ¸ñ
+					//åˆ¤æ–­æ˜¯å¦å­˜åœ¨ç©ºæ ¼
 					if(!"".equals(temp)) {
-						//µ½ÁË¶ÎÂäµÄ½áÎ²£¬½«Æä¼ÓÈëµ½Á´±í£¬²¢Çå¿Õsb
+						//åˆ°äº†æ®µè½çš„ç»“å°¾ï¼Œå°†å…¶åŠ å…¥åˆ°é“¾è¡¨ï¼Œå¹¶æ¸…ç©ºsb
 						res.add(temp);
 					}
 					sb.delete(0, sb.length());
 				} else {
-					//Î´µ½¶ÎÂäµÄ½áÎ²£¬½«½á¹ûÔİ´æ
+					//æœªåˆ°æ®µè½çš„ç»“å°¾ï¼Œå°†ç»“æœæš‚å­˜
 					sb.append((char)ch);
 				}
 			}
-			// ×îºóÒ»¶ÎÈç¹û·Ç¿Õ£¬ ½«×îºóÒ»¶Î¼ÓÈë£¬·ñÔò²»´¦Àí
+			// æœ€åä¸€æ®µå¦‚æœéç©ºï¼Œ å°†æœ€åä¸€æ®µåŠ å…¥ï¼Œå¦åˆ™ä¸å¤„ç†
 	        if (!"".equals(temp)) {
 	            res.add(temp);
 	        }
 			reader.close();
 		} catch(Exception e) {
-			System.out.println("Â·¾¶³ö´í£¬²Ù×÷Ê§°Ü");
+			System.out.println("è·¯å¾„å‡ºé”™ï¼Œæ“ä½œå¤±è´¥");
 			System.exit(0);
 		}
 		return res;
 	}
-	// ²éÖØÒ»Æª
+	// æŸ¥é‡ä¸€ç¯‡
 	public static void checkOne(String originPath, Set<String> dictionary, String copyPath, FileWriter fileWrite) throws IOException {
-		long startTime = System.currentTimeMillis();    //»ñÈ¡¿ªÊ¼Ê±¼ä
-		// ³­Ï®ÎÄ±¾
+		long startTime = System.currentTimeMillis();    //è·å–å¼€å§‹æ—¶é—´
+		// æŠ„è¢­æ–‡æœ¬
 		ArrayList<String> copy=getArticle(copyPath);
-		// Õë¶ÔÒ»¶Î  Á½Á½·Ö×é
+		// é’ˆå¯¹ä¸€æ®µ  ä¸¤ä¸¤åˆ†ç»„
 		List<String> copyTxtListItem=null;
-		//²éÖØ
-		float allWordsNum=0;  //³­Ï®ÎÄ±¾×ÜÊı
-		float similarWords=0;  // ÏàËÆÊı
+		//æŸ¥é‡
+		float allWordsNum=0;  //æŠ„è¢­æ–‡æœ¬æ€»æ•°
+		float similarWords=0;  // ç›¸ä¼¼æ•°
 		for(int i=0; i<copy.size(); i++) {
 			copyTxtListItem=getCoupleWords(copy.get(i));
 			allWordsNum+=copyTxtListItem.size();
@@ -80,20 +85,34 @@ public class CheckPassage {
 	
 		float similar=similarWords/allWordsNum;
 			
-		long endTime = System.currentTimeMillis();    //»ñÈ¡½áÊøÊ±¼ä
+		long endTime = System.currentTimeMillis();    //è·å–ç»“æŸæ—¶é—´
 		
-		System.out.println("Ô­ÎÄÂ·¾¶£º"+originPath+"\t³­Ï®ÂÛÎÄÂ·¾¶£º"+copyPath+"\n²éÖØÂÊ£º"+String.format("%.2f", similar)+"\nÖ´ĞĞÊ±¼ä£º"+(endTime-startTime)+"ms");
+		System.out.println("åŸæ–‡è·¯å¾„ï¼š"+originPath+"		æŠ„è¢­è®ºæ–‡è·¯å¾„ï¼š"+copyPath+"\næŸ¥é‡ç‡"+String.format("%.2f", similar)+"\nÖ´æ‰§è¡Œæ—¶é—´"+(endTime-startTime)+"ms");
 		
-		// Ğ´ÈëÎÄ¼ş
-		fileWrite.append("Ô­ÎÄÂ·¾¶£º"+originPath+"		³­Ï®ÂÛÎÄÂ·¾¶£º"+copyPath+"\n²éÖØÂÊ£º"+String.format("%.2f", similar)+"\n\n");
+		// å†™å…¥æ–‡ä»¶
+		fileWrite.append("åŸæ–‡è·¯å¾„ï¼š"+originPath+"		æŠ„è¢­è®ºæ–‡è·¯å¾„ï¼š"+copyPath+"\næŸ¥é‡ç‡ï¼š"+String.format("%.2f", similar)+"\n\n");
 	}
 	public static void main(String[] args) throws IOException{
-		// µ±Ç°ÎÄ¼şËùÔÚ´ÅÅÌ¸ùÄ¿Â¼
-		String currentPath=System.getProperty("user.dir");
-		String rootPath=currentPath.substring(0, 3);
+		String originPath; //åŸæ–‡è·¯å¾„
+		String copyPath; //æŠ„è¢­æ–‡æœ¬è·¯å¾„
+		String filePath;  //ç­”æ¡ˆè·¯å¾„
+		String[] parms;  //æ¥å—å‚æ•°
 		
-		//ĞÂ½¨ÎÄ¼ş
-		String filePath=rootPath+"ÂÛÎÄ²éÖØ½á¹û.txt";
+		if(args.length!=0) {
+			parms=args;
+		} else {
+			System.out.println("è¯·ç»™å‡ºåŸæ–‡ç»å¯¹è·¯å¾„ï¼ŒæŠ„è¢­ç‰ˆè®ºæ–‡ç»å¯¹è·¯å¾„ï¼Œè¾“å‡ºç­”æ¡ˆæ–‡ä»¶çš„ç»å¯¹è·¯å¾„ã€å‚æ•°æŒ‰é¡ºåºè¾“å…¥ï¼Œå¹¶ç”¨ç”¨ç©ºæ ¼éš”å¼€ã€‘");
+			Scanner scanner=new Scanner(System.in);
+			parms=scanner.nextLine().split(" ");
+			if(parms.length<3) {
+				System.out.println("æ“ä½œé”™è¯¯ï¼Œè¯·æ­£ç¡®è¾“å…¥å‚æ•°");
+				System.exit(0);
+			}
+			scanner.close();
+		}
+		
+		//æ–°å»ºæ–‡ä»¶
+		filePath=parms[2];
 		File resFile=new File(filePath);
 		if(!resFile.exists()) {
 			try {
@@ -102,18 +121,15 @@ public class CheckPassage {
 				e.printStackTrace();
 			}
 		}
-		// Ğ´ÈëÎÄ¼ş
+		//å†™å…¥æ–‡ä»¶
 		FileWriter fileWrite=new FileWriter(resFile, true);
 		
-		System.out.println("Ô­ÎÄÂ·¾¶£º");
-		Scanner scanner=new Scanner(System.in);
-		String originPath=scanner.nextLine();  //"E:\Ñ§Ï°\Èí¼ş¹¤³Ì\test\orig.txt";
-		System.out.println("\n³­Ï®ÎÄ±¾Â·¾¶£º");
-		String copyPath=scanner.nextLine();  //"E:\Ñ§Ï°\Èí¼ş¹¤³Ì\test\orig_0.8_add.txt";  orig_0.8_del  orig_0.8_dis_1  orig_0.8_dis_10  orig_0.8_dis_15
+		originPath=parms[0];  //E:\å­¦ä¹ \è½¯ä»¶å·¥ç¨‹\test\orig.txt
+		copyPath=parms[1];  //E:\å­¦ä¹ \è½¯ä»¶å·¥ç¨‹\test\orig_0.8_add.txt  orig_0.8_del  orig_0.8_dis_1  orig_0.8_dis_10  orig_0.8_dis_15
 		System.out.println();
-		// Ô­ÎÄ±¾
-		ArrayList<String> origin=getArticle(originPath);  //µÃµ½¶ÎÂäÊı×é
-		// ¸ù¾İÔ­ÎÄÉú³É´Êµä
+		// åŸæ–‡æœ¬
+		ArrayList<String> origin=getArticle(originPath);  //å¾—åˆ°æ®µè½æ•°ç»„
+		// æ ¹æ®åŸæ–‡ç”Ÿæˆè¯å…¸
 		Set<String> dictionary = new HashSet<String>();
 		List<String> dictionaryItem = null;
 		for(int j=0; j<origin.size(); j++) {
@@ -125,10 +141,9 @@ public class CheckPassage {
 		
 		checkOne(originPath, dictionary, copyPath, fileWrite);
 		
-		scanner.close();
 		fileWrite.close();
 		
-		System.out.println("\n²éÑ¯½á¹ûÒÑĞ´Èë"+filePath);
+		System.out.println("\næŸ¥è¯¢ç»“æœå·²å†™å…¥"+filePath);
 		
 	}
 }
