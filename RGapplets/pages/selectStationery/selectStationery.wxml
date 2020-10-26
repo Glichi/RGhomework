@@ -1,0 +1,18 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-10-24 15:46:55
+ * @LastEditTime: 2020-10-26 20:37:50
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RGapplets\pages\selectStationery\selectStationery.wxml
+-->
+<view class="select-box">
+  <view class="step-box">
+    <van-steps
+      steps="{{ stepsList }}" 
+      active="{{ activeNum }}"
+      inactive-color="#9B9FA2"
+      active-color="#0581FE"
+    />
+  </view>
+</view>

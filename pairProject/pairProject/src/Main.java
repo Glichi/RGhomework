@@ -22,6 +22,8 @@ public class Main {
             System.out.print("题目中数值（自然数、真分数和真分数分母）的范围：");
             int range = sc.nextInt();
             sc.close();
+            
+            long start = System.currentTimeMillis();
 
             // 清空Exercises.txt,Answers.txt的内容
             MyFile.clear("Exercises.txt");
@@ -47,6 +49,11 @@ public class Main {
                     }
                 }
             }
+            
+            long end = System.currentTimeMillis();
+            
+            System.out.println("运行时间：" + (start-end) + "ms");
+            
         } else if(args.length == 4){
             if(args[0].equals("-e") && args[2].equals("-a")){
                 CheckAnswer checkAnswer = new CheckAnswer();

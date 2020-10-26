@@ -13,7 +13,7 @@ public class Test {
     /**
      * 测试生成题目
      */
-//    @org.junit.Test
+    @org.junit.Test
     public void testGenerator(){
         System.out.println(Generator.generate(5));
     }
@@ -21,7 +21,7 @@ public class Test {
     /**
      * 测试写入文件
      */
-//    @org.junit.Test
+    @org.junit.Test
     public void testWriteFile(){
         MyFile.write("Exercises.txt", Generator.generate(10));
     }
@@ -29,7 +29,7 @@ public class Test {
     /**
      * 测试整数四则运算
      */
-//    @org.junit.Test
+    @org.junit.Test
     public void testIntArithmetic(){
         int num1, num2;
         num1 = 1; num2 = 3;
@@ -41,7 +41,7 @@ public class Test {
     /**
      * 测试分数四则运算
      */
-//    @org.junit.Test
+    @org.junit.Test
     public void testFractionArithmetic(){
         Fraction fraction1 = new Fraction(1, 2);
         Fraction fraction2 = new Fraction(1, 2);
@@ -53,7 +53,7 @@ public class Test {
     /**
      * 测试将中缀表达式转换为后缀表达式
      */
-//    @org.junit.Test
+    @org.junit.Test
     public void testToRPN(){
         String exp = "8 × ( 5 ÷ 7 )";
         System.out.println("后缀表达式：" + RPN.toRPN(exp));
@@ -62,7 +62,7 @@ public class Test {
     /**
      * 测试将字符串转换为分数
      */
-//    @org.junit.Test
+    @org.junit.Test
     public void testStrToFraction(){
         String s = "2'3/8";
         Fraction fraction = calculate.strToFraction(s);
@@ -73,7 +73,7 @@ public class Test {
     /**
      * 测试四则运算
      */
-//    @org.junit.Test
+    @org.junit.Test
     public void testCalculate(){
         // 8 5
         String exp = "8 × ( 5 ÷ 7 × 7 )";

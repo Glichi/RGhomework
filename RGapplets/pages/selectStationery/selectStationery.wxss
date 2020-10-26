@@ -1,0 +1,11 @@
+.select-box{
+  background-color: rgb(245, 245, 245);
+  min-height: 100vh;
+}
+.step-box{
+  background-color: white;
+  padding: 50rpx 60rpx;
+}
+.van-step__title{
+  font-size: 33rpx !important;
+}
