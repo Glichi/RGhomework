@@ -6,53 +6,76 @@
   font-display: swap;
 }
 
-.home-box{
-  position: relative;
-  min-height: 100vh;
-}
-
-.home-head{
-  height: 220rpx;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-.home-open{
-  height: 100%;
-  width: 100%;
-}
-
-.home-content{
-  flex: auto;
-  margin: 20rpx 0 0 0;
+.stationery-box{
+  background-color: white;
   position: relative;
 }
-.back-ground{
-  position: fixed;
-  transform: translate(88%, 0%);
+
+.background-txt{
+  position: absolute;
+  width: 25rpx;
+  height: 350rpx;
   top: 50%;
-  margin-top: -180rpx;
-  border-radius: 50%;
-  border: 5rpx solid #212121;
-  height: 550rpx;
-  width: 550rpx;
-  display: flex;
-  flex-wrap: wrap;
+  left: 50%;
+  margin-top: -175rpx;
+  margin-left: -12.5rpx;
 }
 .back-txt{
-  line-height: 60rpx;
-  font-size: 50rpx;
-  width: 30rpx;
+  line-height: 45rpx;
+  font-size: 38rpx;
   font-family: 'Bauhaus93';
   font-weight: bold;
-  color: #A55752;
+  color: #A98A83;
   word-wrap: break-word;
   word-break: break-all;
-  margin: auto 39%;
 }
-.content-info{
+
+.stationery-content-box{
+  padding: 0 40rpx 40rpx 0;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.content-radio-group{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.stationery-item{
+  width: 300rpx;
+  height: 200rpx;
+  margin: 100rpx 0 0 40rpx;
+  position: relative;
+}
+.radio-box{
+  position: absolute;
+  top: -20rpx;
+  left: -20rpx;
+}
+.van-radio__icon--round{
+  border-radius: 0;
+  background-color: white;
+}
+.van-radio__icon--checked{
+  color: #359aff;
+}
+.stationery-image{
+  width: 100%;
+  height: 100%;
+}
+
+.choosebtn-box{
+  width: 100%;
+  margin: 40rpx 0 0 0;
   display: flex;
   justify-content: center;
-  color: #888888;
+}
+.choose-image{
+  background-color: #359aff;
   font-size: 30rpx;
+  width: 80%;
+  color: white;
 }

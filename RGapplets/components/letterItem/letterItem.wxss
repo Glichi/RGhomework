@@ -1,0 +1,6 @@
+.letter-item{
+  background-color: rgb(223, 180, 126);
+  height: 200rpx;
+  width: 400rpx;
+  margin: 20rpx;
+}

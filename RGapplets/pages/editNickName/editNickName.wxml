@@ -1,0 +1,20 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-10-27 15:04:37
+ * @LastEditTime: 2020-10-27 16:26:54
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RGapplets\pages\editNickName\editNickName.wxml
+-->
+<view class="edit-nickName">
+  <view class="edit-box">
+    <input class="eidt-input" placeholder="请输入昵称（最多10个字符）" value="{{nickName}}" maxlength="10" bindinput="getNickName" />
+    <view class="input-info">好的昵称更容易让别人记住你</view>
+    <view class="btn-box">
+      <button class="save-nickName" type="primary" bindtap="saveNickName">保存</button>
+    </view>
+  </view>
+
+  <van-toast id="van-toast" />
+
+</view>

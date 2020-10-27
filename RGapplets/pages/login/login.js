@@ -1,55 +1,44 @@
 /*
  * @Author: your name
- * @Date: 2020-10-24 15:40:33
- * @LastEditTime: 2020-10-27 15:46:08
+ * @Date: 2020-10-27 11:00:19
+ * @LastEditTime: 2020-10-27 11:38:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: \RGapplets\pages\myPage\myPage.js
+ * @FilePath: \RGapplets\pages\login\login.js
  */
-// pages/myPage/myPage.js
+// pages/login/login.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-      userInfo: {},  // 用户信息
-      userMsgList: [
-        {
-          title: '收件箱',
-          content: '',
-          url: '/pages/InBox/InBox'
-        },
-        {
-          title: '已发送',
-          content: '',
-          url: '/pages/sendBox/sendBox'
+      
+    },
+
+    // 获取用户信息
+    getuserinfo(val){
+      console.log(val)
+      const userInfo = val.detail.userInfo;
+      var app = getApp();
+      wx.login({
+        success(res){
+          console.log(res);
+          app.globalData.userInfo=userInfo;  // 把用户信息放进全局变量
+          console.log(app.globalData.userInfo);
+          wx.setStorageSync("LS_userInfo", userInfo);  // 把用户信息存进缓存
+          wx.switchTab({
+            url: '/pages/myPage/myPage'
+          })
         }
-      ]
+      })
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-      var app = getApp()
-      var that = this;
-      var myObj = [
-        {
-          title: '用户名',
-          content: app.globalData.userInfo.nickName,
-          url: ''
-        },
-        {
-          title: '昵称',
-          content: app.globalData.userInfo.nickName,
-          url: '/pages/editNickName/editNickName'
-        }
-      ]
-      that.setData({
-        userInfo: app.globalData.userInfo,
-        userMsgList: myObj.concat(that.data.userMsgList)
-      })
+
     },
 
     /**
@@ -63,7 +52,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-      
+
     },
 
     /**

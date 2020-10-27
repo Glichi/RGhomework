@@ -1,6 +1,7 @@
 {
   "navigationStyle":"custom",
   "usingComponents": {
-    "van-button": "@vant/weapp/button/index"
+    "van-button": "@vant/weapp/button/index",
+    "LetterItem": "/components/letterItem/letterItem"
   }
 }

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-24 15:46:55
- * @LastEditTime: 2020-10-26 20:37:50
+ * @LastEditTime: 2020-10-27 21:20:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\selectStationery\selectStationery.wxml
@@ -15,4 +15,9 @@
       active-color="#0581FE"
     />
   </view>
+
+  <view class="content-box">
+    <stationeryBox></stationeryBox>
+  </view>
+
 </view>

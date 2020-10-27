@@ -1,55 +1,50 @@
 /*
  * @Author: your name
- * @Date: 2020-10-24 15:40:33
- * @LastEditTime: 2020-10-27 15:46:08
+ * @Date: 2020-10-27 15:04:37
+ * @LastEditTime: 2020-10-27 16:30:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: \RGapplets\pages\myPage\myPage.js
+ * @FilePath: \RGapplets\pages\editNickName\editNickName.js
  */
-// pages/myPage/myPage.js
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-      userInfo: {},  // 用户信息
-      userMsgList: [
-        {
-          title: '收件箱',
-          content: '',
-          url: '/pages/InBox/InBox'
-        },
-        {
-          title: '已发送',
-          content: '',
-          url: '/pages/sendBox/sendBox'
+      nickName: 'GZQ'
+    },
+
+    // 获得 nickName
+    getNickName(e){
+      this.setData({
+        nickName: e.detail.value
+      })
+    },
+
+    // 保存修改昵称
+    saveNickName(){
+      var that = this;
+      if(that.data.nickName == '' || that.data.nickName.length == 0){
+        return Toast.fail('昵称不能为空');
+      }
+      Toast({
+        type: 'success',
+        message: '修改成功',
+        onClose: () => {
+          wx.navigateBack({
+            delta: 1
+          })
         }
-      ]
+      })
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-      var app = getApp()
-      var that = this;
-      var myObj = [
-        {
-          title: '用户名',
-          content: app.globalData.userInfo.nickName,
-          url: ''
-        },
-        {
-          title: '昵称',
-          content: app.globalData.userInfo.nickName,
-          url: '/pages/editNickName/editNickName'
-        }
-      ]
-      that.setData({
-        userInfo: app.globalData.userInfo,
-        userMsgList: myObj.concat(that.data.userMsgList)
-      })
+
     },
 
     /**
@@ -63,7 +58,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-      
+
     },
 
     /**

@@ -1,12 +1,4 @@
-/*
- * @Author: your name
- * @Date: 2020-10-24 15:35:49
- * @LastEditTime: 2020-10-27 11:01:19
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \RGapplets\pages\homePage\homePage.js
- */
-// pages/homePage/homePage.js
+// pages/InBox/InBox.js
 Page({
 
     /**

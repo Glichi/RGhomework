@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-10-20 19:47:01
+ * @LastEditTime: 2020-10-26 23:27:21
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \RGapplets\pages\index\index.js
+ */
 //index.js
 //获取应用实例
 const app = getApp()
@@ -11,9 +19,9 @@ Page({
   },
   //事件处理函数
   bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    // wx.navigateTo({
+    //   url: '../logs/logs'
+    // })
   },
   onLoad: function () {
     if (app.globalData.userInfo) {

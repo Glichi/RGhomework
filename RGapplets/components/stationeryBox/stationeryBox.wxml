@@ -1,0 +1,30 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-10-27 17:32:40
+ * @LastEditTime: 2020-10-27 21:22:15
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RGapplets\components\stationeryBox\stationeryBox.wxml
+-->
+<view class="stationery-box">
+  <view class="background-txt">
+    <view class="back-txt">LISTENER</view>
+  </view>
+
+    <view class="stationery-content-box">
+      <van-radio-group class="content-radio-group" value="{{ setectImageId }}" bind:change="onChange">
+        <view class="stationery-item" wx:for="{{stationeryList}}" wx:key="index">
+          <view class="radio-box">
+            <van-radio name="{{item.id}}"></van-radio>
+          </view>
+          <image class="stationery-image" src="{{item.imageSrc}}" />
+        </view>
+      </van-radio-group>
+      <view class="choosebtn-box">
+        <button class="choose-image" bindtap="chooseImage">确认</button>
+      </view>
+    </view>
+
+    <van-toast id="van-toast" />
+  
+</view>

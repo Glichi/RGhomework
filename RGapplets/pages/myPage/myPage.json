@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText":"个人中心",
-  "usingComponents": {}
+  "usingComponents": {
+    "MyPageItem": "/components/myPageItem/myPageItem"
+  }
 }

@@ -9,3 +9,7 @@
 .van-step__title{
   font-size: 33rpx !important;
 }
+
+.content-box{
+  margin: 30rpx 0 0 0;
+}

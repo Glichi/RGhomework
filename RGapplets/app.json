@@ -1,11 +1,16 @@
 {
     "pages": [
-      
-      
-      "pages/homePage/homePage",
       "pages/selectStationery/selectStationery",  
+
+      "pages/login/login",
+      "pages/homePage/homePage",
+      "pages/myPage/myPage",
+      
       "pages/writeLetter/writeLetter",
-      "pages/myPage/myPage"
+      "pages/editNickName/editNickName",
+      "pages/InBox/InBox",
+      "pages/sendBox/sendBox"
+      
     ],
     "window": {
         "backgroundTextStyle": "light",

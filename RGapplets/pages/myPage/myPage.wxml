@@ -1,8 +1,28 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-24 15:40:33
- * @LastEditTime: 2020-10-26 20:49:53
- * @LastEditors: your name
+ * @LastEditTime: 2020-10-27 15:24:25
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\myPage\myPage.wxml
 -->
+<view class="my-page">
+
+  <MyPageItem title="头像">
+    <view class="head-img-box" slot="contentSlot">
+      <image class="head-image" src="{{userInfo.avatarUrl}}"></image>
+    </view>
+  </MyPageItem>
+
+  <MyPageItem
+    wx:for="{{userMsgList}}"
+    wx:key="index"
+    title="{{item.title}}"
+    url="{{item.url}}"
+  >
+    <view class="myitem-content" slot="contentSlot">
+      {{item.content}}
+    </view>
+  </MyPageItem>
+
+</view>

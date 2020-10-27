@@ -1,0 +1,18 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-10-27 11:10:26
+ * @LastEditTime: 2020-10-27 16:01:26
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RGapplets\components\myPageItem\myPageItem.wxml
+-->
+<view class="{{url.length == 0 ? 'my-item' : 'my-item myGo-item'}}" hover-class="{{url.length == 0 ? '' : 'my-item-hover'}}" bindtap="gotoPage">
+  <view class="item-title">{{title}}</view>
+  <view class="item-content">
+    <slot name="contentSlot"></slot>
+    <view class="show-arrow" wx:if="{{url.length != 0}}">
+      <!-- <van-icon name="arrow" color="#9D9E9D" /> -->
+      >
+    </view>
+  </view>
+</view>

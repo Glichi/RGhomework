@@ -1,0 +1,26 @@
+.my-item{
+  padding: 30rpx 87rpx 30rpx 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 33rpx;
+  background-color: white;
+}
+.my-item-hover{
+  background-color: rgb(248, 248, 249);
+}
+.myGo-item{
+  padding: 30rpx 30rpx 30rpx 30rpx;
+}
+
+.item-content{
+  display: flex;
+  align-items: center;
+}
+.show-arrow{
+  margin: 0 0 0 30rpx;
+  width: 27rpx;
+  color: #9D9E9D;
+}
+
+

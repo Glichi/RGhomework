@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText":"编辑信件",
   "usingComponents": {
-    "van-steps": "@vant/weapp/steps/index"
+    "van-steps": "@vant/weapp/steps/index",
+    "stationeryBox": "/components/stationeryBox/stationeryBox"
   }
 }
