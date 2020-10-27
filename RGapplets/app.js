@@ -6,8 +6,6 @@
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\app.js
  */
-import Toast from './miniprogram_npm/@vant/weapp/toast/toast';
-import {getToken, setToken, removeToken} from './utils/cookie'
 
 App({
   globalData:{

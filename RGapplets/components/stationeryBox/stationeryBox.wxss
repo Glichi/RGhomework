@@ -60,7 +60,9 @@
   background-color: white;
 }
 .van-radio__icon--checked{
-  color: #359aff;
+  color: #A55752 !important;
+  border-color: #A55752;
+
 }
 .stationery-image{
   width: 100%;
@@ -74,7 +76,7 @@
   justify-content: center;
 }
 .choose-image{
-  background-color: #359aff;
+  background-color: #A55752;
   font-size: 30rpx;
   width: 80%;
   color: white;

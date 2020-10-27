@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-10-24 15:46:55
- * @LastEditTime: 2020-10-26 20:35:53
- * @LastEditors: your name
+ * @LastEditTime: 2020-10-27 23:46:26
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\selectStationery\selectStationery.js
  */
@@ -25,6 +25,23 @@ Page({
         },
       ],
       activeNum: 0,  // 当前步骤
+    },
+
+    // 点击步骤时触发的事件
+    getStep(e){
+      if(this.data.activeNum >= e.detail){
+        this.setData({
+          activeNum: e.detail
+        })
+      }
+    },
+
+    // 进入步骤二
+    nextToWrite(val){  // val 是信纸 id
+      this.setData({
+        activeNum: 1
+      })
+      console.log("imageId：" + val.detail);
     },
 
     /**

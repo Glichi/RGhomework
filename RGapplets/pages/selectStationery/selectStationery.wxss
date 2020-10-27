@@ -9,6 +9,13 @@
 .van-step__title{
   font-size: 33rpx !important;
 }
+.vant-steps{
+  font-size: 35rpx;
+}
+.van-step__circle{
+  width: 20rpx !important;
+  height: 20rpx !important;
+}
 
 .content-box{
   margin: 30rpx 0 0 0;

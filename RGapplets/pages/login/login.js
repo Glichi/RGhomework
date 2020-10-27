@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 11:00:19
- * @LastEditTime: 2020-10-27 11:38:41
+ * @LastEditTime: 2020-10-27 22:35:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\login\login.js
  */
-// pages/login/login.js
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
 Page({
 
     /**
@@ -28,8 +28,11 @@ Page({
           console.log(app.globalData.userInfo);
           wx.setStorageSync("LS_userInfo", userInfo);  // 把用户信息存进缓存
           wx.switchTab({
-            url: '/pages/myPage/myPage'
+            url: '/pages/homePage/homePage'
           })
+        },
+        fail(err){
+          Toast.fail("请选择信纸")
         }
       })
     },

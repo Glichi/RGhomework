@@ -1,6 +1,6 @@
 {
     "pages": [
-      "pages/selectStationery/selectStationery",  
+      "pages/selectStationery/selectStationery",
 
       "pages/login/login",
       "pages/homePage/homePage",

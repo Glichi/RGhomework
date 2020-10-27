@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-24 15:46:55
- * @LastEditTime: 2020-10-27 21:20:41
+ * @LastEditTime: 2020-10-28 00:05:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\selectStationery\selectStationery.wxml
@@ -9,15 +9,23 @@
 <view class="select-box">
   <view class="step-box">
     <van-steps
+      class="vant-steps"
       steps="{{ stepsList }}" 
       active="{{ activeNum }}"
+      bind:click-step="getStep"
       inactive-color="#9B9FA2"
-      active-color="#0581FE"
+      active-color="#A55752"
     />
   </view>
 
   <view class="content-box">
-    <stationeryBox></stationeryBox>
+    <stationeryBox 
+      wx:if="{{ activeNum == 0}}" 
+      bind:nextToWrite="nextToWrite"
+    />
+    <WriteBox 
+      wx:if="{{ activeNum == 1}}"
+    />
   </view>
 
 </view>

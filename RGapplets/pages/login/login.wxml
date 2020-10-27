@@ -1,1 +1,3 @@
 <button bindgetuserinfo="getuserinfo" open-type="getUserInfo">登录</button>
+
+<van-toast id="van-toast" />
