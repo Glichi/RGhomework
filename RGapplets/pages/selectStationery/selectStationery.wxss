@@ -1,6 +1,9 @@
 .select-box{
   background-color: rgb(245, 245, 245);
   min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 .step-box{
   background-color: white;
@@ -19,4 +22,6 @@
 
 .content-box{
   margin: 30rpx 0 0 0;
+  flex-grow: 1;
+  position: relative;
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-24 15:46:55
- * @LastEditTime: 2020-10-27 23:46:26
+ * @LastEditTime: 2020-10-28 09:55:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\selectStationery\selectStationery.js
@@ -24,7 +24,7 @@ Page({
           desc: '完成发送'
         },
       ],
-      activeNum: 0,  // 当前步骤
+      activeNum: 1,  // 当前步骤
     },
 
     // 点击步骤时触发的事件
