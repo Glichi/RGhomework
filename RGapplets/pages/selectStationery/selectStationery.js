@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-24 15:46:55
- * @LastEditTime: 2020-10-28 09:55:00
+ * @LastEditTime: 2020-10-29 21:46:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\selectStationery\selectStationery.js
@@ -24,7 +24,9 @@ Page({
           desc: '完成发送'
         },
       ],
-      activeNum: 1,  // 当前步骤
+      checkedImageId: '',  // 已选信纸图片
+      activeNum: 0,  // 当前步骤
+      letterSrc: 'https://i.loli.net/2020/10/28/ejQrL3IMRT6wF9l.png',  // 信纸样式
     },
 
     // 点击步骤时触发的事件
@@ -36,12 +38,18 @@ Page({
       }
     },
 
-    // 进入步骤二
+    // 进入步骤二（书写正文）
     nextToWrite(val){  // val 是信纸 id
+      var app = getApp();
       this.setData({
-        activeNum: 1
+        activeNum: 1,
+        checkedImageId: val.detail
       })
+      app.globalData.checkedImageId = val.detail;
       console.log("imageId：" + val.detail);
+      wx.navigateTo({
+        url: '/pages/writeLetter/writeLetter'
+      })
     },
 
     /**
@@ -62,7 +70,19 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+      var app = getApp();
+      if(app.globalData.isSend){  // 已发送，跳到成功发送页面
+        this.setData({
+          activeNum: 2,
+          checkedImageId: app.globalData.checkedImageId
+        });
+        app.globalData.isSend = false;
+      } else{
+        this.setData({
+          activeNum: 0,
+          checkedImageId: app.globalData.checkedImageId
+        })
+      }
     },
 
     /**

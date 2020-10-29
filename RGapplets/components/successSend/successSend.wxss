@@ -1,0 +1,23 @@
+.success-send-box{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  background-color: antiquewhite;
+}
+
+.success-content{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: white;
+  padding: 40rpx 0;
+}
+.contnt-txt, .time-down{
+  text-align: center;
+  width: 100%;
+}
+.time-down{
+  margin: 30rpx 0 0 0;
+}

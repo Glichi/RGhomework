@@ -21,7 +21,6 @@
 }
 
 .content-box{
-  margin: 30rpx 0 0 0;
   flex-grow: 1;
   position: relative;
 }

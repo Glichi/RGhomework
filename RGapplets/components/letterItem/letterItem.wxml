@@ -1,3 +1,22 @@
-<view class="letter-item">
+<!--
+ * @Author: your name
+ * @Date: 2020-10-27 17:01:24
+ * @LastEditTime: 2020-10-29 19:23:51
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RGapplets\components\letterItem\letterItem.wxml
+-->
+<view class="letter-item" style="background-image: url({{imageUrl}})">
+  <!-- 未读标记（三角形） -->
+  <view class="new-state" wx:if="{{state == 1}}"></view>
   
+  <view class="to-box">
+    To：{{to}}
+  </view>
+  <view class="title-box">
+    {{letterTitle}}
+  </view>
+  <view class="from-box">
+    {{from}}
+  </view>
 </view>

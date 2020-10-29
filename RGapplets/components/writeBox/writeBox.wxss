@@ -13,7 +13,6 @@
   position: relative;
 }
 .back-image{
-  /* background-image: url(https://i.loli.net/2020/10/28/ejQrL3IMRT6wF9l.png); */
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }

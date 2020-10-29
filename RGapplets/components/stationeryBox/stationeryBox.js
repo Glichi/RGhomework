@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 17:32:40
- * @LastEditTime: 2020-10-27 23:29:06
+ * @LastEditTime: 2020-10-29 20:55:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\components\stationeryBox\stationeryBox.js
@@ -17,7 +17,10 @@ Component({
      * 组件的属性列表
      */
     properties: {
-
+      checkedImageId: {
+        type: Number,
+        value: -1
+      }
     },
 
     /**
@@ -69,6 +72,18 @@ Component({
           });
         }
         this.triggerEvent("nextToWrite", that.data.setectImageId);
+      }
+    },
+
+    // 生命周期
+    lifetimes: {
+      // 在组件实例进入页面节点树时执行
+      attached(){
+        if(this.properties.checkedImageId != ''){
+          this.setData({
+            setectImageId: this.properties.checkedImageId
+          })
+        }
       }
     }
 })

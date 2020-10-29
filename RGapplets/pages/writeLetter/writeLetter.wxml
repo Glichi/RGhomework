@@ -1,2 +1,33 @@
-<!--pages/writeLetter/writeLetter.wxml-->
-<text>pages/writeLetter/writeLetter.wxml</text>
+<!--
+ * @Author: your name
+ * @Date: 2020-10-24 15:40:58
+ * @LastEditTime: 2020-10-29 21:08:30
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RGapplets\pages\writeLetter\writeLetter.wxml
+-->
+<view class="write-letter-box" style='background-image: url({{letterSrc}})'>
+  <view 
+    style='height: {{capsuleHeight + capsuleTop + statusBarHeight}}px' 
+    class="back-box"
+    bindtap="gotoback"
+  >
+    <van-icon name="arrow-left" />
+    <view class="back-title">{{navigationTitle}}</view>
+  </view>
+  <view class="letter-content" style="top: {{capsuleBottom}}px;">
+    <view class="title-box">
+      <view class="title-txt">标题：</view>
+      <input class="title-input" type="text" />
+    </view>
+    <view class="text-box">
+      <textarea placeholder="请输入正文" placeholder-style="color: #1f1e1e" class="text-input" type="text" ></textarea>
+    </view>
+    <view class="send-btn-box">
+      <view class="send-btn" bindtap="sendMsg">发送</view>
+    </view>
+  </view>
+
+  <van-dialog id="van-dialog" />
+
+</view>

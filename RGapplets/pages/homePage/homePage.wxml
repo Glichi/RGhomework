@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-24 15:35:49
- * @LastEditTime: 2020-10-27 17:15:44
+ * @LastEditTime: 2020-10-29 19:22:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\homePage\homePage.wxml
@@ -21,7 +21,17 @@
       <view class="info-txt">只显示最近十封信件</view>
     </view>
     <view class="content-list">
-      <LetterItem wx:for="{{5}}" wx:key="index"></LetterItem>
+      <LetterItem 
+        wx:for="{{letterList}}" 
+        wx:key="index" 
+        id="{{item.id}}"
+        to="{{item.to}}"
+        from="{{item.from}}"
+        letterTitle="{{item.letterTitle}}"
+        imageUrl="{{item.imageUrl}}"
+        state="{{item.state}}"
+      />
+      <!-- <LetterItem wx:for="3" wx:key="index"></LetterItem> -->
     </view>
   </view>
 

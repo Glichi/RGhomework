@@ -56,3 +56,9 @@
   color: #888888;
   font-size: 30rpx;
 }
+
+.content-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

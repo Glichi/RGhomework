@@ -1,6 +1,37 @@
 .letter-item{
-  background-color: rgb(223, 180, 126);
-  height: 200rpx;
-  width: 400rpx;
+  height: 300rpx;
+  width: 550rpx;
   margin: 20rpx;
+  padding: 40rpx 30rpx;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: space-between;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.new-state{
+  width: 0;
+  height: 0;
+  border: 40rpx solid;
+  border-color: #a53027 #a53027 transparent transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.to-box{
+  width: 100%;
+  font-size: 30rpx;
+}
+.from-box{
+  width: 100%;
+  font-size: 30rpx;
+  text-align: right;
+}
+.title-box{
+  width: 100%;
+  font-size: 35rpx;
 }
