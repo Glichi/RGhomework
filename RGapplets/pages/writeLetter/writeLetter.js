@@ -1,12 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2020-10-24 15:40:58
- * @LastEditTime: 2020-10-29 21:17:14
+ * @LastEditTime: 2020-10-30 10:42:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\writeLetter\writeLetter.js
  */
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
 
     /**
@@ -18,7 +19,23 @@ Page({
       capsuleHeight: '',  // 右上角胶囊高度
       capsuleTop: '',  // 右上角胶囊上边界坐标
       capsuleBottom: '',  // 右上角胶囊下边界坐标
-      letterSrc: 'https://i.loli.net/2020/10/29/Z7O9Laz423NegKP.png'
+      letterSrc: 'https://i.loli.net/2020/10/29/Z7O9Laz423NegKP.png',
+      letterTitle: '',  // 标题
+      letterContent: '',  // 正文
+    },
+
+    // 获取标题
+    getTitle(e){
+      this.setData({
+        letterTitle: e.detail.value.trim()
+      })
+    },
+
+    // 获取正文
+    getContet(e){
+      this.setData({
+        letterContent: e.detail.value.trim()
+      })
     },
 
     // 返回上一页
@@ -30,6 +47,13 @@ Page({
 
     // 点击发送
     sendMsg(){
+      if(this.data.letterContent == '' || this.data.letterTitle == ''){
+        return Dialog.alert({
+          message: '要填写完整信件哦~',
+        }).then(() => {
+          
+        });
+      }
       Dialog.confirm({
         title: "发送提示",
         message: "确认发送信件吗？"

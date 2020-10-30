@@ -1,23 +1,48 @@
 .success-send-box{
   height: 100%;
   width: 100%;
+  overflow: hidden;
   display: flex;
   align-items: center;
+  flex-direction: column;
   position: absolute;
   background-color: antiquewhite;
 }
 
+.up-box{
+  height: 40%;
+  width: 100%;
+}
+.up-image{
+  width: 100%;
+  height: 100%;
+}
+.down-box{
+  height: 40%;
+  width: 100%;
+}
+.down-image{
+  width: 100%;
+  height: 100%;
+}
+
 .success-content{
+  height: 20%;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   background-color: white;
-  padding: 40rpx 0;
+  align-content: center;
 }
 .contnt-txt, .time-down{
   text-align: center;
   width: 100%;
 }
+.contnt-txt{
+  font-size: 35rpx;
+}
 .time-down{
-  margin: 30rpx 0 0 0;
+  font-size: 30rpx;
+  color: rgb(128, 127, 127);
+  padding: 30rpx 0 0 0;
 }

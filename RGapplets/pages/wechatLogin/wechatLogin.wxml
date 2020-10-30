@@ -1,0 +1,31 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-10-30 12:37:51
+ * @LastEditTime: 2020-10-30 12:49:14
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RGapplets\pages\wechatLogin\wechatLogin.wxml
+-->
+<view class="wechat-login">
+
+  <view class="blank-box" style="height: {{capsuleBottom}}px;"></view>
+
+  <view class="login-content">
+    <view class="logo-box">
+      <view class="circle-logo"></view>
+    </view>
+    <view class="text-box">
+      <view class="text-title">
+        登录后开发者将获得以下权限
+      </view>
+      <view class="text-body">
+        <view class="text-circle"></view>
+        <view class="text-content">获得你的公开信息（昵称、头像、地区等）</view>
+      </view>
+    </view>
+    <view class="login-btn-box">
+      <button class="login-btn" bindgetuserinfo="getuserinfo" open-type="getUserInfo">登录</button>
+    </view>
+  </view>
+  
+</view>

@@ -1,54 +1,51 @@
 /*
  * @Author: your name
- * @Date: 2020-10-24 15:40:33
- * @LastEditTime: 2020-10-30 20:58:19
+ * @Date: 2020-10-30 12:37:51
+ * @LastEditTime: 2020-10-30 12:47:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: \RGapplets\pages\myPage\myPage.js
+ * @FilePath: \RGapplets\pages\wechatLogin\wechatLogin.js
  */
-// pages/myPage/myPage.js
+// pages/wechatLogin/wechatLogin.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-      userInfo: {},  // 用户信息
-      userMsgList: [
-        {
-          title: '收信箱',
-          content: '',
-          url: '/pages/InBox/InBox'
+      statusBarHeight: getApp().globalData.statusBarHeight, // 导航栏的高度
+      capsuleBottom: '',  // 右上角胶囊下边界坐标
+    },
+
+    // 获取用户信息
+    getuserinfo(val){
+      console.log(val)
+      const userInfo = val.detail.userInfo;
+      var app = getApp();
+      wx.login({
+        success(res){
+          console.log(res);
+          app.globalData.userInfo=userInfo;  // 把用户信息放进全局变量
+          console.log(app.globalData.userInfo);
+          wx.setStorageSync("LS_userInfo", userInfo);  // 把用户信息存进缓存
+          wx.switchTab({
+            url: '/pages/homePage/homePage'
+          })
         },
-        {
-          title: '已发送',
-          content: '',
-          url: '/pages/sendBox/sendBox'
+        fail(err){
+          Toast.fail("请选择信纸")
         }
-      ]
+      })
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-      var app = getApp()
-      var that = this;
-      var myObj = [
-        {
-          title: '用户名',
-          content: app.globalData.userInfo.nickName,
-          url: ''
-        },
-        {
-          title: '昵称',
-          content: app.globalData.userInfo.nickName,
-          url: '/pages/editNickName/editNickName'
-        }
-      ]
+      var that =this;
+      var capsuleObj = wx.getMenuButtonBoundingClientRect();
       that.setData({
-        userInfo: app.globalData.userInfo,
-        userMsgList: myObj.concat(that.data.userMsgList)
+        capsuleBottom: capsuleObj.bottom
       })
     },
 
@@ -63,7 +60,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-      
+
     },
 
     /**

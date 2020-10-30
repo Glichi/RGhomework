@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 17:32:40
- * @LastEditTime: 2020-10-29 20:55:05
+ * @LastEditTime: 2020-10-30 20:47:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\components\stationeryBox\stationeryBox.js
@@ -30,19 +30,19 @@ Component({
       stationeryList: [
         {
           id: 1,
-          imageSrc: '/assest/img/stationery1.png'
+          imageSrc: '/assest/img/111.png'
         },
         {
           id: 2,
-          imageSrc: '/assest/img/stationery1.png'
+          imageSrc: '/assest/img/111.png'
         },
         {
           id: 3,
-          imageSrc: '/assest/img/stationery1.png'
+          imageSrc: '/assest/img/111.png'
         },
         {
           id: 4,
-          imageSrc: '/assest/img/stationery1.png'
+          imageSrc: '/assest/img/111.png'
         }
       ],
       setectImageId: ''

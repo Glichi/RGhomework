@@ -1,18 +1,25 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-29 21:15:06
- * @LastEditTime: 2020-10-29 21:25:19
- * @LastEditors: your name
+ * @LastEditTime: 2020-10-30 10:26:48
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\components\successSend\successSend.wxml
 -->
 <view class="success-send-box">
+  <view class="up-box">
+    <image class="up-image" src="/assest/img/up.png" />
+  </view>
   <view class="success-content">
     <view class="contnt-txt">
       发送成功！期待别人的回信吧！
     </view>
     <view class="time-down">
-      {{second}}秒后返回
+      {{second}} 秒后返回
     </view>
+  </view>
+  <view class="down-box">
+    <image class="down-image" src="/assest/img/down.png" />
+      
   </view>
 </view>

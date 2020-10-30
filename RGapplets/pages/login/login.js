@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 11:00:19
- * @LastEditTime: 2020-10-27 22:35:22
+ * @LastEditTime: 2020-10-30 20:55:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\login\login.js
@@ -20,28 +20,36 @@ Page({
     getuserinfo(val){
       console.log(val)
       const userInfo = val.detail.userInfo;
-      var app = getApp();
-      wx.login({
-        success(res){
-          console.log(res);
-          app.globalData.userInfo=userInfo;  // 把用户信息放进全局变量
-          console.log(app.globalData.userInfo);
-          wx.setStorageSync("LS_userInfo", userInfo);  // 把用户信息存进缓存
-          wx.switchTab({
-            url: '/pages/homePage/homePage'
-          })
-        },
-        fail(err){
-          Toast.fail("请选择信纸")
-        }
-      })
+      if(userInfo){
+        var app = getApp();
+        wx.login({
+          success(res){
+            console.log(res);
+            app.globalData.userInfo=userInfo;  // 把用户信息放进全局变量
+            console.log(app.globalData.userInfo);
+            wx.setStorageSync("LS_userInfo", userInfo);  // 把用户信息存进缓存
+            wx.switchTab({
+              url: '/pages/homePage/homePage'
+            })
+          },
+          fail(err){
+            Toast.fail("操作失败")
+          }
+        })
+      } else{
+        Toast.fail("授权失败")
+      }
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+      // setTimeout( () => {
+      //   wx.reLaunch({
+      //     url: '/pages/wechatLogin/wechatLogin'
+      //   })
+      // }, 3000);
     },
 
     /**

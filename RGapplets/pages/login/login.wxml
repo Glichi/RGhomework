@@ -1,3 +1,22 @@
-<button bindgetuserinfo="getuserinfo" open-type="getUserInfo">登录</button>
+<!--
+ * @Author: your name
+ * @Date: 2020-10-27 11:00:19
+ * @LastEditTime: 2020-10-30 20:46:02
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RGapplets\pages\login\login.wxml
+-->
+<view class="login-box">
 
-<van-toast id="van-toast" />
+  <image class="login-back-image" src="/assest/img/login.jpg" />
+    
+
+  <view class="down-circle">
+    <view class="down-txt">Listener</view>
+    <view class="login-btn-box">
+      <button class="login-btn"  bindgetuserinfo="getuserinfo" open-type="getUserInfo">登录</button>
+    </view>
+  </view>
+
+  <van-toast id="van-toast" />
+</view>

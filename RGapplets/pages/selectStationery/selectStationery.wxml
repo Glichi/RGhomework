@@ -12,7 +12,6 @@
       class="vant-steps"
       steps="{{ stepsList }}" 
       active="{{ activeNum }}"
-      bind:click-step="getStep"
       inactive-color="#9B9FA2"
       active-color="#A55752"
     />
@@ -27,6 +26,7 @@
     
     <SuccessSend 
       wx:if="{{ activeNum == 2}}"
+      bind:restart="restart"
     />
 
   </view>

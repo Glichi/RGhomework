@@ -1,0 +1,59 @@
+.login-content{
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.logo-box{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.circle-logo{
+  width: 250rpx;
+  height: 250rpx;
+  border-radius: 50%;
+  border: 1rpx solid red;
+}
+
+.text-box{
+  margin-top: 92rpx;
+  height: 123rpx;
+}
+.text-title{
+  font-size: 30rpx;
+  margin-left: 120rpx;
+}
+.text-body{
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: center;
+}
+.text-circle{
+  width: 8rpx;
+  height: 8rpx;
+  color: rgba(80, 80, 80, 1);
+  background-color: rgba(153, 153, 153, 1);
+  border-radius: 50%;
+  font-size: 24rpx;
+  margin-top: 13rpx;
+  line-height: 150%;
+  text-align: center;
+}
+.text-content{
+  color: rgba(128, 128, 128, 1);
+  font-size: 28rpx;
+  width: 464rpx;
+  line-height: 150%;
+  margin-left: 22rpx;
+}
+
+.login-btn-box{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 200rpx 0 0 0;
+}
+.login-btn{
+  width: 80%;
+}

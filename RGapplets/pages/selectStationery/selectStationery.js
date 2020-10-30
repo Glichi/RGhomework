@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-24 15:46:55
- * @LastEditTime: 2020-10-29 21:46:37
+ * @LastEditTime: 2020-10-30 10:27:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\selectStationery\selectStationery.js
@@ -29,15 +29,6 @@ Page({
       letterSrc: 'https://i.loli.net/2020/10/28/ejQrL3IMRT6wF9l.png',  // 信纸样式
     },
 
-    // 点击步骤时触发的事件
-    getStep(e){
-      if(this.data.activeNum >= e.detail){
-        this.setData({
-          activeNum: e.detail
-        })
-      }
-    },
-
     // 进入步骤二（书写正文）
     nextToWrite(val){  // val 是信纸 id
       var app = getApp();
@@ -49,6 +40,13 @@ Page({
       console.log("imageId：" + val.detail);
       wx.navigateTo({
         url: '/pages/writeLetter/writeLetter'
+      })
+    },
+
+    // 发送成功，回到第一步
+    restart(){
+      this.setData({
+        activeNum: 0
       })
     },
 
