@@ -1,17 +1,19 @@
 {
     "pages": [
       
+      "pages/homePage/homePage",
 
       "pages/login/login",
       "pages/wechatLogin/wechatLogin",
-      "pages/homePage/homePage",
+      "pages/writeLetter/writeLetter",
       "pages/myPage/myPage",
       "pages/selectStationery/selectStationery",
-      "pages/writeLetter/writeLetter",
+      
+      "pages/letterContent/letterContent",
       "pages/editNickName/editNickName",
       "pages/InBox/InBox",
-      "pages/sendBox/sendBox"
-      
+      "pages/sendBox/sendBox",
+      "pages/draftsBox/draftsBox"
     ],
     "window": {
         "backgroundTextStyle": "light",

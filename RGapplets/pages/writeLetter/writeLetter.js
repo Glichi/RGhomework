@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-24 15:40:58
- * @LastEditTime: 2020-10-30 10:42:07
+ * @LastEditTime: 2020-11-03 17:18:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\writeLetter\writeLetter.js
@@ -22,6 +22,11 @@ Page({
       letterSrc: 'https://i.loli.net/2020/10/29/Z7O9Laz423NegKP.png',
       letterTitle: '',  // 标题
       letterContent: '',  // 正文
+      letterId: '',  // 信件id 用于回信
+      to: '',  // 收送人（用于查看草稿箱【回信】）
+      from: '',  // 发送人（用于查看草稿箱【回信】）
+      placeholderTextarea: '',  // textarea placeholder 文案
+      btnText: '',  // 按钮文案
     },
 
     // 获取标题
@@ -45,9 +50,17 @@ Page({
       })
     },
 
-    // 点击发送
+    // 点击保存
+    saveMsg(){
+      var that = this;
+      console.log('保存成功');
+      Toast.success('保存成功');
+    },
+
+    // 点击发送 / 回复
     sendMsg(){
-      if(this.data.letterContent == '' || this.data.letterTitle == ''){
+      var that = this;
+      if(that.data.letterContent == '' || that.data.letterTitle == ''){
         return Dialog.alert({
           message: '要填写完整信件哦~',
         }).then(() => {
@@ -59,8 +72,12 @@ Page({
         message: "确认发送信件吗？"
       }).then( () => {
         var app = getApp();
-        app.globalData.isSend = true;
-        app.globalData.checkedImageId = '';
+        if(that.data.letterId != ''){  // 回信
+          
+        } else{  // 写信
+          app.globalData.isSend = true;
+          app.globalData.checkedImageId = '';
+        }
         wx.navigateBack({
           delta: 1
         })
@@ -74,12 +91,27 @@ Page({
      */
     onLoad: function (options) {
       var that =this;
+      console.log(options)
       var capsuleObj = wx.getMenuButtonBoundingClientRect();
       that.setData({
         capsuleHeight: capsuleObj.height,
         capsuleTop: capsuleObj.top,
         capsuleBottom: capsuleObj.bottom
       })
+      if(!options.letterId){  // 写信
+        that.setData({
+          btnText: '发送',
+          placeholderTextarea: '写些什么吧~'
+        })
+      } else{  // 回信 看信
+        that.setData({
+          letterId: options.letterId,
+          to: options.to,
+          from: options.from,
+          btnText: '回复',
+          placeholderTextarea: '写个温暖的回复吧~'
+        })
+      }
     },
 
     /**
@@ -107,7 +139,7 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+      this.saveMsg();
     },
 
     /**

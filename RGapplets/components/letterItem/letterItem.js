@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 17:01:24
- * @LastEditTime: 2020-10-29 19:22:35
- * @LastEditors: your name
+ * @LastEditTime: 2020-11-03 15:20:50
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\components\letterItem\letterItem.js
  */
@@ -49,6 +49,12 @@ Component({
      * 组件的方法列表
      */
     methods: {
-
+      // 点击进入回信
+      gotoReply(){
+        var that = this;
+        wx.navigateTo({
+          url: `/pages/letterContent/letterContent?letterId=${that.data.id}&to=${that.data.to}&from=${that.data.from}`
+        })
+      },
     }
 })

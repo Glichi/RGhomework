@@ -8,7 +8,7 @@
 
 .home-box{
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .home-head{
@@ -23,9 +23,12 @@
 }
 
 .home-content{
-  flex: auto;
-  margin: 20rpx 0 0 0;
-  position: relative;
+  position: absolute;
+  top: 220rpx;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow:auto
 }
 .back-ground{
   position: fixed;
@@ -41,24 +44,25 @@
 }
 .back-txt{
   line-height: 60rpx;
-  font-size: 50rpx;
+  font-size: 58rpx;
   width: 30rpx;
   font-family: 'Bauhaus93';
   font-weight: bold;
   color: #A55752;
   word-wrap: break-word;
   word-break: break-all;
-  margin: auto 39%;
+  margin: auto 37%;
 }
 .content-info{
   display: flex;
   justify-content: center;
   color: #888888;
   font-size: 30rpx;
+  margin: 0 0 20rpx 0;
 }
 
 .content-list{
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  padding: 20rpx 0 0 20rpx;
 }

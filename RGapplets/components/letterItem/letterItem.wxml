@@ -1,12 +1,12 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-27 17:01:24
- * @LastEditTime: 2020-10-29 19:23:51
+ * @LastEditTime: 2020-10-31 11:53:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\components\letterItem\letterItem.wxml
 -->
-<view class="letter-item" style="background-image: url({{imageUrl}})">
+<view class="letter-item" style="background-image: url({{imageUrl}})" bindtap="gotoReply">
   <!-- 未读标记（三角形） -->
   <view class="new-state" wx:if="{{state == 1}}"></view>
   

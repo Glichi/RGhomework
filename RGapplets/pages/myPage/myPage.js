@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-24 15:40:33
- * @LastEditTime: 2020-10-30 20:58:19
+ * @LastEditTime: 2020-11-03 19:37:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\myPage\myPage.js
@@ -15,6 +15,11 @@ Page({
     data: {
       userInfo: {},  // 用户信息
       userMsgList: [
+        {
+          title: '草稿箱',
+          content: '',
+          url: '/pages/draftsBox/draftsBox'
+        },
         {
           title: '收信箱',
           content: '',

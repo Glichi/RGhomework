@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-24 15:40:58
- * @LastEditTime: 2020-10-30 10:43:59
+ * @LastEditTime: 2020-11-03 19:34:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\writeLetter\writeLetter.wxml
@@ -20,9 +20,10 @@
       <view class="title-txt">标题：</view>
       <input class="title-input" type="text" value="{{letterTitle}}" bindinput="getTitle" />
     </view>
+    <view class="to-name" wx:if="{{letterId != ''}}">To {{to}}：</view>
     <view class="text-box">
       <textarea 
-        placeholder="请输入正文" 
+        placeholder="{{placeholderTextarea}}" 
         placeholder-style="color: #1f1e1e" 
         class="text-input" 
         type="text"
@@ -32,7 +33,8 @@
       ></textarea>
     </view>
     <view class="send-btn-box">
-      <view class="send-btn" bindtap="sendMsg">发送</view>
+      <view class="save-btn send-btn" bindtap="saveMsg">保存</view>
+      <view class="send-btn" bindtap="sendMsg">{{btnText}}</view>
     </view>
   </view>
 

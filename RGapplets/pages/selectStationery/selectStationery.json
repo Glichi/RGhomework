@@ -3,7 +3,6 @@
   "usingComponents": {
     "van-steps": "@vant/weapp/steps/index",
     "stationeryBox": "/components/stationeryBox/stationeryBox",
-    "WriteBox": "/components/writeBox/writeBox",
     "SuccessSend": "/components/successSend/successSend"
   }
 }

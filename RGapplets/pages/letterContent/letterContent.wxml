@@ -1,0 +1,37 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-03 15:04:40
+ * @LastEditTime: 2020-11-03 15:55:55
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RGapplets\pages\letterContent\letterContent.wxml
+-->
+<view class="write-letter-box" style='background-image: url({{letterSrc}})'>
+  <view 
+    style='height: {{capsuleHeight + capsuleTop + statusBarHeight}}px' 
+    class="back-box"
+    bindtap="gotoback"
+  >
+    <van-icon name="arrow-left" />
+    <view class="back-title">信件内容</view>
+  </view>
+  <view class="letter-content" style="top: {{capsuleBottom}}px;">
+    <view class="title-box">
+      <view class="title-input">{{letterTitle}}</view>
+    </view>
+    <view class="text-box">
+      <view class="text-input">
+        <view class="to-name">{{to}}：</view>
+        <view class="content-txt">
+          {{letterContent}}
+        </view>
+        <view class="from-name">{{from}}</view>
+        <view class="time-box">{{time}}</view>
+      </view>
+    </view>
+    <view class="send-btn-box">
+      <view class="send-btn" bindtap="replyMsg">回复</view>
+    </view>
+  </view>
+
+</view>
