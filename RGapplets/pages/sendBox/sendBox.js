@@ -1,11 +1,60 @@
+/*
+ * @Author: your name
+ * @Date: 2020-10-27 15:04:37
+ * @LastEditTime: 2020-11-09 20:09:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RGapplets\pages\sendBox\sendBox.js
+ */
 // pages/sendBox/sendBox.js
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+      letterList: [
+        {
+          letterId: 1,
+          letterType: 3,
+          titleTxt: "啥标题来着我忘了",
+          to: 'gzq1',
+          from: 'gzq2',
+          time: "2020.11.02",
+          envelope: 'https://i.loli.net/2020/10/29/Gl79Ynq1M64c5xi.png'
+        },
+        {
+          letterId: 2,
+          letterType: 3,
+          titleTxt: "啥标题来着我忘了",
+          to: 'gzq1',
+          from: 'gzq2',
+          time: "2020.11.02",
+          envelope: 'https://i.loli.net/2020/10/29/Gl79Ynq1M64c5xi.png'
+        }
+      ]
+    },
 
+    // 删除信件
+    delItem(val){
+      var letterId = val.detail;
+      wx.vibrateShort({
+        success: (result) => {
+          Dialog.confirm({
+            title: '删除提示',
+            message: "是否要删除该信件？"
+          }).then( () => {
+            // confirm
+            Toast.success('删除成功');
+          }).catch( () => {
+            // cancel
+          })
+        },
+        fail: () => {},
+        complete: () => {}
+      });
     },
 
     /**

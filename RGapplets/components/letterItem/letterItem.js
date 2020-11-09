@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 17:01:24
- * @LastEditTime: 2020-11-03 15:20:50
+ * @LastEditTime: 2020-11-09 18:34:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\components\letterItem\letterItem.js
@@ -12,7 +12,7 @@ Component({
      * 组件的属性列表
      */
     properties: {
-      id: {
+      letterId: {
         type: Number,
         value: 0
       },
@@ -53,7 +53,7 @@ Component({
       gotoReply(){
         var that = this;
         wx.navigateTo({
-          url: `/pages/letterContent/letterContent?letterId=${that.data.id}&to=${that.data.to}&from=${that.data.from}`
+          url: `/pages/letterContent/letterContent?letterId=${that.data.letterId}&to=${that.data.to}&from=${that.data.from}`
         })
       },
     }

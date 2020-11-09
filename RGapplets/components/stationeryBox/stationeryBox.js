@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 17:32:40
- * @LastEditTime: 2020-10-30 20:47:16
+ * @LastEditTime: 2020-11-03 21:56:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\components\stationeryBox\stationeryBox.js
@@ -34,15 +34,15 @@ Component({
         },
         {
           id: 2,
-          imageSrc: '/assest/img/111.png'
+          imageSrc: 'https://i.loli.net/2020/11/03/7AifnqLBrgmdNDs.png'
         },
         {
           id: 3,
-          imageSrc: '/assest/img/111.png'
+          imageSrc: 'https://i.loli.net/2020/11/03/OYl5VWJ4wvtk2uP.png'
         },
         {
           id: 4,
-          imageSrc: '/assest/img/111.png'
+          imageSrc: 'https://i.loli.net/2020/11/03/bnDzVJSXG94QMvK.png'
         }
       ],
       setectImageId: ''

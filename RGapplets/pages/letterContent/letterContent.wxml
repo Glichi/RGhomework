@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-03 15:04:40
- * @LastEditTime: 2020-11-03 15:55:55
+ * @LastEditTime: 2020-11-09 18:38:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\letterContent\letterContent.wxml
@@ -29,7 +29,7 @@
         <view class="time-box">{{time}}</view>
       </view>
     </view>
-    <view class="send-btn-box">
+    <view class="send-btn-box" wx:if="{{letterType != 3}}">
       <view class="send-btn" bindtap="replyMsg">回复</view>
     </view>
   </view>

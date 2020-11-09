@@ -1,1 +1,8 @@
-/* pages/sendBox/sendBox.wxss */
+.send-box{
+  min-height: 100vh;
+  background-color: rgb(245, 245, 245);
+}
+
+.item-list{
+  padding: 20rpx 40rpx;
+}

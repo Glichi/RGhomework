@@ -1,0 +1,32 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-09 16:21:52
+ * @LastEditTime: 2020-11-09 19:48:59
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RGapplets\components\letterManageItem\letterManageItem.wxml
+-->
+<view class="item-manage" bindtap="gotoDetails" bindlongpress="delItem">
+
+  <view class="left-box">
+    <view class="title-box">
+      {{titleTxt}}
+    </view>
+    <view class="left-down">
+      <view class="user-name" wx:if="{{to != ''}}">
+        {{letterType == 2 ? '发件人：'+from : '收件人：'+to}}
+      </view>
+      <view class="time-box">时间：{{time}}</view>
+    </view>
+  </view>
+
+  <view class="right-box">
+    <view class="envelope-box">
+      <image class="envelope-image" src="{{envelope}}"/>
+    </view>
+    <view class="arrow-box">
+      <van-icon name="arrow" />
+    </view>
+  </view>
+
+</view>

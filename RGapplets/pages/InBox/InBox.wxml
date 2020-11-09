@@ -1,2 +1,28 @@
-<!--pages/InBox/InBox.wxml-->
-<text>pages/InBox/InBox.wxml</text>
+<!--
+ * @Author: your name
+ * @Date: 2020-10-27 15:04:37
+ * @LastEditTime: 2020-11-09 20:10:42
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RGapplets\pages\InBox\InBox.wxml
+-->
+<view class="in-box">
+  <view class="item-list">
+    <LetterManageItem 
+      wx:for="{{letterList}}"
+      wx:key="index"
+      titleTxt="{{item.titleTxt}}"
+      from="{{item.from}}"
+      to="{{item.to}}"
+      time="{{item.time}}"
+      envelope="{{item.envelope}}"
+      letterId="{{item.letterId}}"
+      letterType="{{item.letterType}}"
+      bind:delItem="delItem"
+    />
+  </view>
+
+  <van-dialog id="van-dialog" />
+  <van-toast id="van-toast" />
+
+</view>

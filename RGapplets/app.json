@@ -1,18 +1,18 @@
 {
     "pages": [
-      
-      "pages/homePage/homePage",
-
       "pages/login/login",
+      "pages/sendBox/sendBox",
+
+      
       "pages/wechatLogin/wechatLogin",
       "pages/writeLetter/writeLetter",
       "pages/myPage/myPage",
       "pages/selectStationery/selectStationery",
-      
+      "pages/homePage/homePage",  
       "pages/letterContent/letterContent",
       "pages/editNickName/editNickName",
       "pages/InBox/InBox",
-      "pages/sendBox/sendBox",
+      
       "pages/draftsBox/draftsBox"
     ],
     "window": {

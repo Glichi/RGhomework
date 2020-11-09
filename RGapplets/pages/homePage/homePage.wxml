@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-24 15:35:49
- * @LastEditTime: 2020-10-31 12:06:57
+ * @LastEditTime: 2020-11-09 18:29:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\homePage\homePage.wxml
@@ -21,7 +21,7 @@
       <LetterItem 
         wx:for="{{letterList}}" 
         wx:key="index" 
-        id="{{item.id}}"
+        letterId="{{item.letterId}}"
         to="{{item.to}}"
         from="{{item.from}}"
         letterTitle="{{item.letterTitle}}"

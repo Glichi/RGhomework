@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-03 15:04:40
- * @LastEditTime: 2020-11-03 17:05:15
+ * @LastEditTime: 2020-11-09 18:37:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\letterContent\letterContent.js
@@ -21,6 +21,7 @@ Page({
       letterTitle: '',  // 标题
       letterContent: '',  // 正文
       letterId: '',  // 信件id 用于看信
+      letterType: '',  // 信件类型
       to: '',  // 收信人（一般都是自己）
       from: '',  // 寄信人
       time: '',  // 时间
@@ -45,12 +46,14 @@ Page({
      */
     onLoad: function (options) {
       var that =this;
+      console.log(options)
       var capsuleObj = wx.getMenuButtonBoundingClientRect();
       that.setData({
         capsuleHeight: capsuleObj.height,
         capsuleTop: capsuleObj.top,
         capsuleBottom: capsuleObj.bottom,
         letterId: options.letterId,
+        letterType: options.letterType ? options.letterType : 2,
         to: options.to,
         from: options.from,
         letterTitle: '啥标题啊我也不知道啊',

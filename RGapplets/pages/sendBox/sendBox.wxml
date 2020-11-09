@@ -1,2 +1,28 @@
-<!--pages/sendBox/sendBox.wxml-->
-<text>pages/sendBox/sendBox.wxml</text>
+<!--
+ * @Author: your name
+ * @Date: 2020-10-27 15:04:37
+ * @LastEditTime: 2020-11-09 20:10:54
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RGapplets\pages\sendBox\sendBox.wxml
+-->
+<view class="send-box">
+  <view class="item-list">
+    <LetterManageItem 
+      wx:for="{{letterList}}"
+      wx:key="index"
+      letterId="{{item.letterId}}"
+      titleTxt="{{item.titleTxt}}"
+      from="{{item.from}}"
+      to="{{item.to}}"
+      time="{{item.time}}"
+      envelope="{{item.envelope}}"
+      letterType="{{item.letterType}}"
+      bind:delItem="delItem"
+    />
+  </view>
+
+  <van-dialog id="van-dialog" />
+  <van-toast id="van-toast" />
+
+</view>

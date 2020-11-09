@@ -1,0 +1,43 @@
+.item-manage{
+  display: flex;
+  padding: 30rpx 20rpx;
+  justify-content: space-between;
+  background-color: white;
+  margin: 0 0 20rpx 0;
+  height: 150rpx;
+}
+
+.left-box{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+.title-box{
+  font-size: 35rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+.left-down{
+  font-size: 30rpx;
+  width: 100%;
+}
+
+.right-box{
+  display: flex;
+  align-content: center;
+}
+.envelope-box{
+  height: 100%;
+  width: 220rpx;
+  margin: 0 30rpx 0 0;
+}
+.envelope-image{
+  width: 100%;
+  height: 100%;
+}
+.arrow-box{
+  display: flex;
+  align-items: center;
+}

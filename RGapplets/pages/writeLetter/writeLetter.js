@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-24 15:40:58
- * @LastEditTime: 2020-11-03 17:18:29
+ * @LastEditTime: 2020-11-09 18:48:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\writeLetter\writeLetter.js
@@ -22,7 +22,7 @@ Page({
       letterSrc: 'https://i.loli.net/2020/10/29/Z7O9Laz423NegKP.png',
       letterTitle: '',  // 标题
       letterContent: '',  // 正文
-      letterId: '',  // 信件id 用于回信
+      letterId: '',  // 信件id 用于回信 / 草稿箱
       to: '',  // 收送人（用于查看草稿箱【回信】）
       from: '',  // 发送人（用于查看草稿箱【回信】）
       placeholderTextarea: '',  // textarea placeholder 文案
@@ -98,18 +98,26 @@ Page({
         capsuleTop: capsuleObj.top,
         capsuleBottom: capsuleObj.bottom
       })
-      if(!options.letterId){  // 写信
-        that.setData({
-          btnText: '发送',
-          placeholderTextarea: '写些什么吧~'
-        })
-      } else{  // 回信 看信
+      if(!options.letterType){  // 是否从草稿箱中进入
+        if(!options.letterId){  // 写信
+          that.setData({
+            btnText: '发送',
+            placeholderTextarea: '写些什么吧~'
+          })
+        } else{  // 回信 看信
+          that.setData({
+            letterId: options.letterId,
+            to: options.to,
+            from: options.from,
+            btnText: '回复',
+            placeholderTextarea: '写个温暖的回复吧~'
+          })
+        }
+      } else{  // 从草稿箱中进入
         that.setData({
           letterId: options.letterId,
-          to: options.to,
-          from: options.from,
-          btnText: '回复',
-          placeholderTextarea: '写个温暖的回复吧~'
+          btnText: '发送',
+          placeholderTextarea: '写些什么吧~'
         })
       }
     },

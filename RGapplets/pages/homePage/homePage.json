@@ -1,5 +1,8 @@
 {
   "navigationStyle":"custom",
+  "enablePullDownRefresh":true,
+  "backgroundTextStyle":"dark",
+  "backgroundColor":"#ffff",
   "usingComponents": {
     "van-button": "@vant/weapp/button/index",
     "LetterItem": "/components/letterItem/letterItem"

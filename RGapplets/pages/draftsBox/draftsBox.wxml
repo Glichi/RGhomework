@@ -1,2 +1,20 @@
-<!--pages/draftsBox/draftsBox.wxml-->
-<text>pages/draftsBox/draftsBox.wxml</text>
+<view class="drafts-box">
+  <view class="item-list">
+    <LetterManageItem 
+      wx:for="{{letterList}}"
+      wx:key="index"
+      titleTxt="{{item.titleTxt}}"
+      from="{{item.from}}"
+      to="{{item.to}}"
+      time="{{item.time}}"
+      envelope="{{item.envelope}}"
+      letterId="{{item.letterId}}"
+      letterType="{{item.letterType}}"
+      bind:delItem="delItem"
+    />
+  </view>
+
+  <van-dialog id="van-dialog" />
+  <van-toast id="van-toast" />
+
+</view>
