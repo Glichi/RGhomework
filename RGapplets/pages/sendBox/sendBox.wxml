@@ -1,13 +1,16 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-27 15:04:37
- * @LastEditTime: 2020-11-09 20:10:54
+ * @LastEditTime: 2020-11-13 21:09:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\sendBox\sendBox.wxml
 -->
 <view class="send-box">
-  <view class="item-list">
+
+  <view class="no-letter" wx:if="{{letterList.length == 0}}">暂无信件</view>
+
+  <view class="item-list" wx:if="{{letterList.length != 0}}">
     <LetterManageItem 
       wx:for="{{letterList}}"
       wx:key="index"

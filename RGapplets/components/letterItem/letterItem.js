@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 17:01:24
- * @LastEditTime: 2020-11-09 18:34:51
+ * @LastEditTime: 2020-11-13 18:12:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\components\letterItem\letterItem.js
@@ -53,7 +53,7 @@ Component({
       gotoReply(){
         var that = this;
         wx.navigateTo({
-          url: `/pages/letterContent/letterContent?letterId=${that.data.letterId}&to=${that.data.to}&from=${that.data.from}`
+          url: `/pages/letterContent/letterContent?letterId=${that.data.letterId}`
         })
       },
     }

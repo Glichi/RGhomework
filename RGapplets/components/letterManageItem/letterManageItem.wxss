@@ -1,4 +1,5 @@
 .item-manage{
+  position: relative;
   display: flex;
   padding: 30rpx 20rpx;
   justify-content: space-between;
@@ -7,10 +8,21 @@
   height: 150rpx;
 }
 
+.new-state{
+  width: 0;
+  height: 0;
+  border: 25rpx solid;
+  border-color: #a53027 #a53027 transparent transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .left-box{
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
+  width: 360rpx;
 }
 .title-box{
   font-size: 35rpx;
@@ -20,8 +32,11 @@
   width: 100%;
 }
 .left-down{
-  font-size: 30rpx;
+  font-size: 28rpx;
   width: 100%;
+}
+.time-box{
+  margin: 10rpx 0 0 0;
 }
 
 .right-box{

@@ -1,12 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2020-10-24 15:40:33
- * @LastEditTime: 2020-11-03 19:37:34
+ * @LastEditTime: 2020-11-13 21:16:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\myPage\myPage.js
  */
 // pages/myPage/myPage.js
+import {getUserInfo} from '../../api/getUserInfo'
 Page({
 
     /**
@@ -15,21 +16,21 @@ Page({
     data: {
       userInfo: {},  // 用户信息
       userMsgList: [
-        {
-          title: '草稿箱',
-          content: '',
-          url: '/pages/draftsBox/draftsBox'
-        },
-        {
-          title: '收信箱',
-          content: '',
-          url: '/pages/InBox/InBox'
-        },
-        {
-          title: '已发送',
-          content: '',
-          url: '/pages/sendBox/sendBox'
-        }
+        // {
+        //   title: '草稿箱',
+        //   content: '',
+        //   url: '/pages/draftsBox/draftsBox'
+        // },
+        // {
+        //   title: '收信箱',
+        //   content: '',
+        //   url: '/pages/InBox/InBox'
+        // },
+        // {
+        //   title: '已发送',
+        //   content: '',
+        //   url: '/pages/sendBox/sendBox'
+        // }
       ]
     },
 
@@ -37,24 +38,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-      var app = getApp()
-      var that = this;
-      var myObj = [
-        {
-          title: '用户名',
-          content: app.globalData.userInfo.nickName,
-          url: ''
-        },
-        {
-          title: '昵称',
-          content: app.globalData.userInfo.nickName,
-          url: '/pages/editNickName/editNickName'
-        }
-      ]
-      that.setData({
-        userInfo: app.globalData.userInfo,
-        userMsgList: myObj.concat(that.data.userMsgList)
-      })
+      
     },
 
     /**
@@ -68,7 +52,48 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-      
+      getUserInfo().then( res => {
+        console.log(res);
+        if(res.status == 20000){
+          var app = getApp()
+          app.globalData.userInfo.nick = res.data.userInfo.nickName
+          wx.setStorageSync("LS_userInfo", app.globalData.userInfo);
+          var that = this;
+          var myObj = [
+            {
+              title: '用户名',
+              content: app.globalData.userInfo.nickName,
+              url: ''
+            },
+            {
+              title: '昵称',
+              content: app.globalData.userInfo.nick,
+              url: '/pages/editNickName/editNickName'
+            },
+            {
+              title: '草稿箱',
+              content: '',
+              url: '/pages/draftsBox/draftsBox'
+            },
+            {
+              title: '收信箱',
+              content: '',
+              url: '/pages/InBox/InBox'
+            },
+            {
+              title: '已发送',
+              content: '',
+              url: '/pages/sendBox/sendBox'
+            }
+          ]
+          that.setData({
+            userInfo: app.globalData.userInfo,
+            userMsgList: myObj
+          })
+        }
+      }).catch( err => {
+        console.log(err);
+      })
     },
 
     /**

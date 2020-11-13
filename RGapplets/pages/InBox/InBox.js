@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 15:04:37
- * @LastEditTime: 2020-11-09 20:11:29
+ * @LastEditTime: 2020-11-13 21:08:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\InBox\InBox.js
@@ -10,37 +10,39 @@
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 
+import {getInBoxList} from '../../api/getInBoxList'
+import {delInLetter} from '../../api/delInLetter'
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-      letterList: [
-        {
-          letterId: 1,
-          letterType: 2,
-          titleTxt: "啥标题来着我忘了",
-          to: 'gzq1',
-          from: 'gzq2',
-          time: "2020.11.02",
-          envelope: 'https://i.loli.net/2020/10/29/Gl79Ynq1M64c5xi.png'
-        },
-        {
-          letterId: 2,
-          letterType: 2,
-          titleTxt: "啥标题来着我忘了",
-          to: 'gzq1',
-          from: 'gzq2',
-          time: "2020.11.02",
-          envelope: 'https://i.loli.net/2020/10/29/Gl79Ynq1M64c5xi.png'
+      letterList: [],
+      delLetterId: ''
+    },
+
+    // 删除信件【接口】
+    delInLetterById(){
+      var that = this;
+      delInLetter({
+        id: that.data.delLetterId
+      }).then( res => {
+        console.log(res);
+        if(res.status == 20000){
+          that.getInBoxList();
+          Toast.success('删除成功');
+        } else{
+          Toast.fail('删除失败');
         }
-      ]
+      })
     },
 
     // 删除信件
     delItem(val){
-      var letterId = val.detail;
+      var that = this;
+      that.data.delLetterId = val.detail;
       wx.vibrateShort({
         success: (result) => {
           Dialog.confirm({
@@ -48,7 +50,7 @@ Page({
             message: "是否要删除该信件？"
           }).then( () => {
             // confirm
-            Toast.success('删除成功');
+            that.delInLetterById();
           }).catch( () => {
             // cancel
           })
@@ -58,11 +60,44 @@ Page({
       });
     },
 
+    // 获取收件箱所有信件
+    getInBoxList(){
+      var that = this;
+      getInBoxList().then( res => {
+        console.log(res);
+        if(res.status == 20000){
+          let list = res.data.recipientEnvelopeVOList;
+          let len = list.length;
+          var getList = [];
+          for(var i=0; i<len; i++){
+            var obj = {
+              letterId: list[i].id,
+              letterType: 2,
+              envelope: list[i].urlEnvelope,
+              titleTxt: list[i].title,
+              time: list[i].gmtCreate,
+              to: list[i].recipientNickName,
+              toId: list[i].recipientId,
+              from: list[i].writerNickName,
+              fromId: list[i].writerId,
+              state: list[i].isRead == 0 ? 1 : 0
+            };
+            getList.push(obj);
+          }
+          that.setData({
+            letterList: getList
+          })
+        }
+      }).catch( err => {
+        console.log(err);
+      })
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+      this.getInBoxList();
     },
 
     /**

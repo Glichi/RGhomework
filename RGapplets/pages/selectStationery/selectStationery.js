@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-24 15:46:55
- * @LastEditTime: 2020-10-30 10:27:11
+ * @LastEditTime: 2020-11-13 21:36:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\selectStationery\selectStationery.js
@@ -37,9 +37,8 @@ Page({
         checkedImageId: val.detail
       })
       app.globalData.checkedImageId = val.detail;
-      console.log("imageId：" + val.detail);
       wx.navigateTo({
-        url: '/pages/writeLetter/writeLetter'
+        url: `/pages/writeLetter/writeLetter?envelopeId=${val.detail[0].id}&letterSrc=${val.detail[0].imageSrc}`
       })
     },
 

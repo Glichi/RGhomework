@@ -1,12 +1,15 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 11:00:19
- * @LastEditTime: 2020-10-30 20:55:10
+ * @LastEditTime: 2020-11-13 16:49:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\login\login.js
  */
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+
+import {login} from '../../api/login'
+import {setToken, getToken} from '../../utils/cookie'
 Page({
 
     /**
@@ -18,7 +21,9 @@ Page({
 
     // 获取用户信息
     getuserinfo(val){
-      console.log(val)
+      wx.showLoading({
+        title: '登录中',
+      })
       const userInfo = val.detail.userInfo;
       if(userInfo){
         var app = getApp();
@@ -26,10 +31,25 @@ Page({
           success(res){
             console.log(res);
             app.globalData.userInfo=userInfo;  // 把用户信息放进全局变量
-            console.log(app.globalData.userInfo);
             wx.setStorageSync("LS_userInfo", userInfo);  // 把用户信息存进缓存
-            wx.switchTab({
-              url: '/pages/homePage/homePage'
+            var code = res.code;
+            login({
+              code
+            }).then( res => {
+              wx.hideLoading()
+              console.log(res);
+              if(res.status == 20000){
+                setToken(res.data.loginDTO.token);
+                wx.switchTab({
+                  url: '/pages/homePage/homePage'
+                })
+              } else{
+                Toast.fail('登录失败');
+              }
+            }).catch( err => {
+              wx.hideLoading();
+              Toast.fail('登录失败');
+              console.log(err);
             })
           },
           fail(err){

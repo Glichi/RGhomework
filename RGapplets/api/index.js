@@ -1,64 +1,64 @@
 /*
  * @Author: your name
  * @Date: 2020-10-21 21:58:25
- * @LastEditTime: 2020-10-21 22:08:58
- * @LastEditors: your name
+ * @LastEditTime: 2020-11-13 17:16:54
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\api\index.js
  */
 import {getToken, setToken, removeToken} from '../utils/cookie.js'
 
-const baseUrl = '';
+const baseUrl = 'https://temp.tanjiaming99.com:8080/listener';
 
-const request = (url, options) => {
-  var token = getToken();
-  var header = {};
+const request= (url, options) => {
+  var token=getToken();
+  var header={};
   if(!token){
-    header = {
+    header={
       'Content-Type': 'application/json; charset=UTF-8'
-    };
-  } else{
-    header = {
+    }
+  }else{
+    header={
       'Content-Type': 'application/json; charset=UTF-8',
-      'Authorization': token
+      'token': token
     }
   }
 
   return new Promise((resolve, reject) => {
     wx.request({
-      url: baseUrl + url,
+      url: baseUrl+url,
+      method: options.method,
       data: options.data,
-      method: options.method, // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: header, // 设置请求的 header
-      success: function(res){
-        if(res.data.code){
+      header:header,
+      success(res){
+        if(res.data.status == 20000){
           resolve(res.data);
-        } else{
-          reject(res.data);
+        }else{
+          reject(res.data)
         }
       },
-      fail: function() {
+      fail(err){
         reject(err.data);
       }
     })
   })
 }
 
-const get = (url, options={}) => {
-  return request(url, {method: 'GET', data: options})
+const get=(url, options={}) => {
+  return request(url, { method: 'GET', data: options })
 }
 
 const post = (url, options) => {
-  return request(url, {methods: 'POST', data: options})
+  return request(url, { method: 'POST', data: options })
 }
 
 const put = (url, options) => {
-  return request(url, {methods: 'PUT', data: options});
+  return request(url, { method: 'PUT', data: options })
 }
 
 // 不能声明DELETE（关键字）
 const remove = (url, options) => {
-  return request(url, {method: 'DELETE', data: options});
+  return request(url, { method: 'DELETE', data: options })
 }
 
 module.exports = {

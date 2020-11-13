@@ -1,12 +1,15 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-09 16:21:52
- * @LastEditTime: 2020-11-09 19:48:59
+ * @LastEditTime: 2020-11-13 19:49:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\components\letterManageItem\letterManageItem.wxml
 -->
 <view class="item-manage" bindtap="gotoDetails" bindlongpress="delItem">
+
+  <!-- 未读标记（三角形） -->
+  <view class="new-state" wx:if="{{state == 1}}"></view>
 
   <view class="left-box">
     <view class="title-box">

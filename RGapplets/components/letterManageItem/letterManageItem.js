@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-09 16:21:52
- * @LastEditTime: 2020-11-09 19:52:42
+ * @LastEditTime: 2020-11-13 20:56:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\components\letterManageItem\letterManageItem.js
@@ -39,6 +39,10 @@ Component({
       letterType:{
         type: Number,
         value: 0  // 1 -> 草稿箱  2 -> 收信件   3 -> 发信件
+      },
+      state: {
+        type: String,
+        value: ''
       }
     },
 
@@ -63,13 +67,13 @@ Component({
       // 进入详情页面
       gotoDetails(){
         var that = this;
-        if(that.data.letterType == 1){
+        if(that.data.letterType == 1){  // 草稿箱
           wx.navigateTo({
             url: `/pages/writeLetter/writeLetter?letterType=${that.data.letterType}&letterId=${that.data.letterId}`,
           })
-        } else{
+        } else{  // 收信箱、发信箱
           wx.navigateTo({
-            url: `/pages/letterContent/letterContent?letterId=${that.data.letterId}&to=${that.data.to}&from=${that.data.from}&letterType=${that.data.letterType}`
+            url: `/pages/letterContent/letterContent?letterId=${that.data.letterId}&letterType=${that.data.letterType}`
           })
         }
       },
@@ -77,7 +81,7 @@ Component({
       // 删除信件
       delItem(){
         var that = this;
-        this.triggerEvent("delItem", 'asd');  //that.data.letterId
+        this.triggerEvent("delItem", that.data.letterId);
       }
     }
 })

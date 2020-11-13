@@ -53,6 +53,16 @@
   word-break: break-all;
   margin: auto 37%;
 }
+
+.no-letter{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #888888;
+  font-size: 30rpx;
+  padding: 20rpx 0 0 20rpx;
+}
+
 .content-info{
   display: flex;
   justify-content: center;

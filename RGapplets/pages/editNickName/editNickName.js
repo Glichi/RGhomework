@@ -1,19 +1,21 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 15:04:37
- * @LastEditTime: 2020-10-27 16:30:57
+ * @LastEditTime: 2020-11-13 17:23:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\editNickName\editNickName.js
  */
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+
+import {updateNickName} from '../../api/updateNickName'
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-      nickName: 'GZQ'
+      nickName: ''
     },
 
     // 获得 nickName
@@ -29,14 +31,23 @@ Page({
       if(that.data.nickName == '' || that.data.nickName.length == 0){
         return Toast.fail('昵称不能为空');
       }
-      Toast({
-        type: 'success',
-        message: '修改成功',
-        onClose: () => {
-          wx.navigateBack({
-            delta: 1
+      updateNickName({
+        nickName: that.data.nickName
+      }).then( res => {
+        console.log(res);
+        if(res.status == 20000){
+          Toast({
+            type: 'success',
+            message: '修改成功',
+            onClose: () => {
+              wx.navigateBack({
+                delta: 1
+              })
+            }
           })
         }
+      }).catch( err => {
+        console.log(err);
       })
     },
 
@@ -44,7 +55,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+      var app = getApp()
+      this.setData({
+        nickName: app.globalData.userInfo.nick
+      });
     },
 
     /**

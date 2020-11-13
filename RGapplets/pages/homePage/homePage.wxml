@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-24 15:35:49
- * @LastEditTime: 2020-11-09 18:29:53
+ * @LastEditTime: 2020-11-13 21:02:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\homePage\homePage.wxml
@@ -16,7 +16,9 @@
     <image class="home-open" src="../../assest/img/open.png" ></image>
   </view>
 
-  <view class="home-content">
+  <view class="no-letter" wx:if="{{letterList.length == 0}}">暂无信件</view>
+
+  <view class="home-content" wx:if="{{letterList.length !=0 }}">
     <view class="content-list">
       <LetterItem 
         wx:for="{{letterList}}" 

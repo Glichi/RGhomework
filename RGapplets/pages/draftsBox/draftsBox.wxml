@@ -1,5 +1,16 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-03 19:37:05
+ * @LastEditTime: 2020-11-13 21:10:25
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \RGapplets\pages\draftsBox\draftsBox.wxml
+-->
 <view class="drafts-box">
-  <view class="item-list">
+
+  <view class="no-letter" wx:if="{{letterList.length == 0}}">暂无信件</view>
+
+  <view class="item-list" wx:if="{{letterList.length != 0}}">
     <LetterManageItem 
       wx:for="{{letterList}}"
       wx:key="index"

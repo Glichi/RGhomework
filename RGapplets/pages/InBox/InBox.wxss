@@ -3,6 +3,15 @@
   background-color: rgb(245, 245, 245);
 }
 
+.no-letter{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #888888;
+  font-size: 30rpx;
+  padding: 20rpx 0 0 20rpx;
+}
+
 .item-list{
   padding: 20rpx 40rpx;
 }

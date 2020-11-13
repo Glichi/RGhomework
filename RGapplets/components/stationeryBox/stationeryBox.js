@@ -1,13 +1,15 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 17:32:40
- * @LastEditTime: 2020-11-03 21:56:25
+ * @LastEditTime: 2020-11-13 21:36:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\components\stationeryBox\stationeryBox.js
  */
 // components/stationeryBox/stationeryBox.js
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+
+import {getAllSrc} from '../../api/getAllSrc'
 Component({
 
     options:{
@@ -28,24 +30,24 @@ Component({
      */
     data: {
       stationeryList: [
-        {
-          id: 1,
-          imageSrc: '/assest/img/111.png'
-        },
-        {
-          id: 2,
-          imageSrc: 'https://i.loli.net/2020/11/03/7AifnqLBrgmdNDs.png'
-        },
-        {
-          id: 3,
-          imageSrc: 'https://i.loli.net/2020/11/03/OYl5VWJ4wvtk2uP.png'
-        },
-        {
-          id: 4,
-          imageSrc: 'https://i.loli.net/2020/11/03/bnDzVJSXG94QMvK.png'
-        }
+        // {
+        //   id: 1,
+        //   imageSrc: '/assest/img/111.png'
+        // },
+        // {
+        //   id: 2,
+        //   imageSrc: 'https://i.loli.net/2020/11/03/7AifnqLBrgmdNDs.png'
+        // },
+        // {
+        //   id: 3,
+        //   imageSrc: 'https://i.loli.net/2020/11/03/OYl5VWJ4wvtk2uP.png'
+        // },
+        // {
+        //   id: 4,
+        //   imageSrc: 'https://i.loli.net/2020/11/03/bnDzVJSXG94QMvK.png'
+        // }
       ],
-      setectImageId: ''
+      setectImageId: '',
     },
 
     /**
@@ -58,7 +60,6 @@ Component({
         that.setData({
           setectImageId: event.detail
         })
-        console.log(that.data.setectImageId)
       },
 
       // 确认选择
@@ -71,7 +72,35 @@ Component({
             duration: 2000
           });
         }
-        this.triggerEvent("nextToWrite", that.data.setectImageId);
+        var selectObj = that.data.stationeryList.filter( item => {
+          if(item.id == that.data.setectImageId){
+            return item;
+          }
+        })
+        this.triggerEvent("nextToWrite", selectObj);
+      },
+
+      // 获取所有样式【接口】
+      getAllLetterSrc(){
+        var that = this;
+        getAllSrc().then( res => {
+          console.log(res);
+          if(res.status == 20000){
+            var list = []
+            for(var item of res.data.envelopeStyles){
+              var obj = {
+                id: item.id,
+                imageSrc: item.urlPaper
+              }
+              list.push(obj);
+            }
+            that.setData({
+              stationeryList: list
+            });
+          }
+        }).catch( err => {
+          console.log(err);
+        })
       }
     },
 
@@ -79,9 +108,11 @@ Component({
     lifetimes: {
       // 在组件实例进入页面节点树时执行
       attached(){
-        if(this.properties.checkedImageId != ''){
-          this.setData({
-            setectImageId: this.properties.checkedImageId
+        var that = this;
+        that.getAllLetterSrc();
+        if(that.properties.checkedImageId != ''){
+          that.setData({
+            setectImageId: that.properties.checkedImageId
           })
         }
       }
