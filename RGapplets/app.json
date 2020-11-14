@@ -1,14 +1,14 @@
 {
     "pages": [
-      "pages/selectStationery/selectStationery",
+      "pages/homePage/homePage",      
       
 
       "pages/login/login",
       "pages/wechatLogin/wechatLogin",
       "pages/writeLetter/writeLetter",
-      "pages/myPage/myPage",   
       
-      "pages/homePage/homePage",
+      "pages/selectStationery/selectStationery",  
+      "pages/myPage/myPage",
       "pages/letterContent/letterContent",
       "pages/editNickName/editNickName",
       "pages/InBox/InBox",

@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-03 19:37:05
- * @LastEditTime: 2020-11-13 21:10:25
- * @LastEditors: your name
+ * @LastEditTime: 2020-11-14 17:18:42
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\draftsBox\draftsBox.wxml
 -->
@@ -21,6 +21,7 @@
       envelope="{{item.envelope}}"
       letterId="{{item.letterId}}"
       letterType="{{item.letterType}}"
+      state="{{item.state}}"
       bind:delItem="delItem"
     />
   </view>

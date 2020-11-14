@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 15:04:37
- * @LastEditTime: 2020-11-13 21:08:56
+ * @LastEditTime: 2020-11-14 17:23:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\InBox\InBox.js
@@ -111,7 +111,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+      this.getInBoxList();
     },
 
     /**

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-03 19:37:05
- * @LastEditTime: 2020-11-09 20:12:20
+ * @LastEditTime: 2020-11-14 17:44:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\draftsBox\draftsBox.js
@@ -10,36 +10,21 @@
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 
+import {getAllDrafts} from '../../api/getAllDrafts'
+import {delDrafts} from '../../api/delDrafts'
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-      letterList: [
-        {
-          letterId: 1,
-          letterType: 1,
-          titleTxt: "啥标题来着我忘了",
-          to: '',
-          from: '',
-          time: "2020.11.02",
-          envelope: 'https://i.loli.net/2020/10/29/Gl79Ynq1M64c5xi.png'
-        },
-        {
-          letterId: 2,
-          letterType: 1,
-          titleTxt: "啥标题来着我忘了",
-          to: '',
-          from: '',
-          time: "2020.11.02",
-          envelope: 'https://i.loli.net/2020/10/29/Gl79Ynq1M64c5xi.png'
-        }
-      ]
+      letterList: []
     },
 
     // 删除信件
     delItem(val){
+      var that = this;
       var letterId = val.detail;
       wx.vibrateShort({
         success: (result) => {
@@ -47,8 +32,16 @@ Page({
             title: '删除提示',
             message: "是否要删除该信件？"
           }).then( () => {
-            // confirm
-            Toast.success('删除成功');
+            // 删除接口
+            delDrafts({
+              id: letterId
+            }).then( res => {
+              console.log(res);
+              if(res.status == 20000){
+                that.getDraftsList();
+                Toast.success('删除成功');
+              }
+            })
           }).catch( () => {
             // cancel
           })
@@ -58,11 +51,45 @@ Page({
       });
     },
 
+    // 获取当前用户的所有的草稿【接口】
+    getDraftsList(){
+      var that = this;
+      getAllDrafts().then( res => {
+        console.log(res);
+        if(res.status == 20000){
+          let list = res.data.draftBoxList;
+          let len = list.length;
+          var getList = [];
+          for(var i=0; i<len; i++){
+            var obj = {
+              letterId: list[i].id,
+              letterType: 1,
+              envelope: list[i].urlEnvelope,
+              titleTxt: list[i].title,
+              time: list[i].gmtModified,
+              to: list[i].recipientNickName,
+              toId: list[i].recipientId,
+              from: list[i].writerNickName,
+              fromId: list[i].writerId,
+              state: 0
+            }
+            getList.push(obj);
+          }
+          that.setData({
+            letterList: getList
+          })
+        }
+      }).catch( err => {
+        console.log(err);
+      })
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+      var that = this;
+      that.getDraftsList();
     },
 
     /**
@@ -76,7 +103,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+      var that = this;
+      that.getDraftsList();
     },
 
     /**

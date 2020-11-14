@@ -1,13 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2020-11-03 15:04:40
- * @LastEditTime: 2020-11-13 20:15:07
+ * @LastEditTime: 2020-11-14 16:26:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\letterContent\letterContent.js
  */
 // pages/letterContent/letterContent.js
 import {getLetterContent} from '../../api/getLetterContent'
+import {getSendLetterContent} from '../../api/getSendLetterContent'
 Page({
 
     /**
@@ -44,7 +45,7 @@ Page({
       })
     },
 
-    // 根据信件id获取信件具体内容
+    // 根据信件id获取信件具体内容【收信】
     getLetterContent(){
       var that = this;
       getLetterContent({
@@ -67,6 +68,31 @@ Page({
       })
     },
 
+    // 获取写信箱中一封信的内容
+    getSendContent(){
+      var that = this;
+      getSendLetterContent({
+        id: that.data.letterId
+      }).then( res => {
+        console.log(res);
+        if(res.status == 20000){
+          var resObj = res.data.writerBoxContent;
+          that.setData({
+            toId: resObj.recipientId,
+            to: resObj.recipientNickName,
+            fromId: resObj.writerId,
+            from: resObj.writerNickName,
+            letterTitle: resObj.title,
+            letterContent: resObj.content,
+            letterSrc: resObj.urlPaper,
+            time: resObj.gmtCreate
+          })
+        }
+      }).catch( err => {
+        console.log(err);
+      })
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
@@ -79,9 +105,15 @@ Page({
         capsuleTop: capsuleObj.top,
         capsuleBottom: capsuleObj.bottom,
         letterId: options.letterId,
-        letterType: options.letterType ? options.letterType : 2
+        letterType: Number(options.letterType)
       })
-      that.getLetterContent();
+      if(that.data.letterType == 1){  // 针对草稿箱
+
+      } else if(that.data.letterType == 2){  // 针对收信箱
+        that.getLetterContent();
+      } else if(that.data.letterType == 3){  // 针对发信箱（已发送）
+        that.getSendContent();
+      }
     },
 
     /**

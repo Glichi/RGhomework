@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-24 15:35:49
- * @LastEditTime: 2020-11-13 21:04:23
+ * @LastEditTime: 2020-11-14 23:40:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\homePage\homePage.js
@@ -18,9 +18,9 @@ Page({
     },
 
     // 获取用户收件箱最新10条收件记录【接口】
-    getLastLetters(){
+    async getLastLetters(){
       var that = this;
-      getLastTen().then( res => {
+      await getLastTen().then( res => {
         console.log(res);
         if(res.status == 20000){
           let list = res.data.recipientEnvelopeVOList 
@@ -86,16 +86,18 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: async function () {
+      var that = this;
       console.log('下拉刷新');
-      setTimeout(() => {
+      await that.getLastLetters();
+      // setTimeout(() => {
         // 调用刷新接口
         wx.stopPullDownRefresh({
           success(res){
             console.log('刷新成功');
           }
         })
-      }, 3000);
+      // }, 3000);
     },
 
     /**

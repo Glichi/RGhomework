@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-27 15:04:37
- * @LastEditTime: 2020-11-13 21:09:42
+ * @LastEditTime: 2020-11-14 15:25:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\sendBox\sendBox.wxml
@@ -14,13 +14,14 @@
     <LetterManageItem 
       wx:for="{{letterList}}"
       wx:key="index"
-      letterId="{{item.letterId}}"
       titleTxt="{{item.titleTxt}}"
       from="{{item.from}}"
       to="{{item.to}}"
       time="{{item.time}}"
       envelope="{{item.envelope}}"
+      letterId="{{item.letterId}}"
       letterType="{{item.letterType}}"
+      state="{{item.state}}"
       bind:delItem="delItem"
     />
   </view>
