@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-24 15:40:58
- * @LastEditTime: 2020-11-15 00:50:07
+ * @LastEditTime: 2020-11-15 12:26:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\writeLetter\writeLetter.js
@@ -17,6 +17,7 @@ import {addDrafts} from  '../../api/addDrafts'
 import {addReplyDrafts} from '../../api/addReplyDrafts'
 import {updateDrafts} from '../../api/updateDrafts'
 import {draftsByReplyLetterId} from '../../api/draftsByReplyLetterId'
+import {delDrafts} from '../../api/delDrafts'
 
 Page({
 
@@ -165,9 +166,9 @@ Page({
     },
 
     // 发送回信【接口】
-    sendReply(){
+    async sendReply(){
       var that = this;
-      sendReply({
+      await sendReply({
         recipientId: Number(that.data.toId),
         recipientNickName: that.data.to,
         title: that.data.letterTitle,
@@ -177,11 +178,6 @@ Page({
         console.log(res);
         if(res.status == 20000){
           Toast.success('发送成功');
-          setTimeout( () => {
-            wx.navigateBack({
-              delta: 1
-            })
-          }, 2000);
         }
       }).catch( err => {
         console.log(err);
@@ -189,9 +185,9 @@ Page({
     },
 
     // 发送信息（非回信）【接口】
-    sendLetter(){
+    async sendLetter(){
       var that = this;
-      sendLetter({
+      await sendLetter({
         title: that.data.letterTitle,
         content: that.data.letterContent,
         envelopeId: Number(that.data.envelopeId)
@@ -201,9 +197,7 @@ Page({
           var app = getApp();
           app.globalData.isSend = true;
           app.globalData.checkedImageId = '';
-          wx.navigateBack({
-            delta: 1
-          })
+          Toast.success('发送成功');
         }
       }).catch( err => {
         console.log(err);
@@ -277,12 +271,24 @@ Page({
       Dialog.confirm({
         title: "发送提示",
         message: "确认发送信件吗？"
-      }).then( () => {
+      }).then( async () => {
         if(that.data.letterId != ''){  // 回信
-          that.sendReply();
+          await that.sendReply();
         } else{  // 写信
-          that.sendLetter();
+          await that.sendLetter();
         }
+        if(that.data.draftsId != ''){  // 回复草稿
+          await delDrafts({
+            id: that.data.draftsId
+          }).then( res => {
+            console.log(res);
+          })
+        }
+        setTimeout( () => {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 2000)
       }).catch( (err) => {
         console.log(err);
       })

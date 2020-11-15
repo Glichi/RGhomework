@@ -1,12 +1,12 @@
 {
     "pages": [
-      "pages/homePage/homePage",      
+      
       
 
       "pages/login/login",
       "pages/wechatLogin/wechatLogin",
       "pages/writeLetter/writeLetter",
-      
+      "pages/homePage/homePage",
       "pages/selectStationery/selectStationery",  
       "pages/myPage/myPage",
       "pages/letterContent/letterContent",

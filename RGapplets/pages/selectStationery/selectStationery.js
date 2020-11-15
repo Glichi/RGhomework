@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-24 15:46:55
- * @LastEditTime: 2020-11-13 21:36:55
+ * @LastEditTime: 2020-11-15 12:29:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\selectStationery\selectStationery.js
@@ -80,6 +80,9 @@ Page({
           checkedImageId: app.globalData.checkedImageId
         })
       }
+      // this.setData({
+      //   activeNum: 0
+      // })
     },
 
     /**

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-03 19:37:05
- * @LastEditTime: 2020-11-14 17:44:11
+ * @LastEditTime: 2020-11-15 12:33:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\draftsBox\draftsBox.js
@@ -52,9 +52,9 @@ Page({
     },
 
     // 获取当前用户的所有的草稿【接口】
-    getDraftsList(){
+    async getDraftsList(){
       var that = this;
-      getAllDrafts().then( res => {
+      await getAllDrafts().then( res => {
         console.log(res);
         if(res.status == 20000){
           let list = res.data.draftBoxList;
@@ -124,8 +124,15 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
-
+    onPullDownRefresh: async function () {
+      var that = this;
+      console.log('下拉刷新');
+      await that.getDraftsList();
+      wx.stopPullDownRefresh({
+        success(res){
+          console.log('刷新成功');
+        }
+      })
     },
 
     /**

@@ -1,5 +1,8 @@
 {
   "navigationBarTitleText":"草稿箱",
+  "enablePullDownRefresh":true,
+  "backgroundTextStyle":"dark",
+  "backgroundColor":"#ffff",
   "usingComponents": {
     "LetterManageItem": "/components/letterManageItem/letterManageItem",
     "van-dialog": "@vant/weapp/dialog/index",

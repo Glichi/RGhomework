@@ -90,14 +90,11 @@ Page({
       var that = this;
       console.log('下拉刷新');
       await that.getLastLetters();
-      // setTimeout(() => {
-        // 调用刷新接口
-        wx.stopPullDownRefresh({
-          success(res){
-            console.log('刷新成功');
-          }
-        })
-      // }, 3000);
+      wx.stopPullDownRefresh({
+        success(res){
+          console.log('刷新成功');
+        }
+      })
     },
 
     /**

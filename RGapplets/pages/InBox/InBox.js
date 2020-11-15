@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 15:04:37
- * @LastEditTime: 2020-11-14 17:23:23
+ * @LastEditTime: 2020-11-15 12:36:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\InBox\InBox.js
@@ -61,9 +61,9 @@ Page({
     },
 
     // 获取收件箱所有信件
-    getInBoxList(){
+    async getInBoxList(){
       var that = this;
-      getInBoxList().then( res => {
+      await getInBoxList().then( res => {
         console.log(res);
         if(res.status == 20000){
           let list = res.data.recipientEnvelopeVOList;
@@ -131,8 +131,15 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
-
+    onPullDownRefresh: async function () {
+      var that = this;
+      console.log('下拉刷新');
+      await that.getInBoxList();
+      wx.stopPullDownRefresh({
+        success(res){
+          console.log('刷新成功');
+        }
+      })
     },
 
     /**

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 15:04:37
- * @LastEditTime: 2020-11-14 17:21:17
+ * @LastEditTime: 2020-11-15 12:37:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\sendBox\sendBox.js
@@ -50,9 +50,9 @@ Page({
     },
 
     // 获取用户写信箱的内容【接口】
-    getSendList(){
+    async getSendList(){
       var that = this;
-      getSendBoxList().then( res => {
+      await getSendBoxList().then( res => {
         console.log(res);
         if(res.status == 20000){
           let list = res.data.writerBoxList;
@@ -121,8 +121,15 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
-
+    onPullDownRefresh: async function () {
+      var that = this;
+      console.log('下拉刷新');
+      await that.getSendList();
+      wx.stopPullDownRefresh({
+        success(res){
+          console.log('刷新成功');
+        }
+      })
     },
 
     /**
