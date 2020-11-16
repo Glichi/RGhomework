@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-24 15:40:33
- * @LastEditTime: 2020-11-13 21:16:47
+ * @LastEditTime: 2020-11-16 23:00:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\myPage\myPage.js
@@ -56,7 +56,7 @@ Page({
         console.log(res);
         if(res.status == 20000){
           var app = getApp()
-          app.globalData.userInfo.nick = res.data.userInfo.nickName
+          app.globalData.userInfo.nick = res.data.userInfo.nickName ? res.data.userInfo.nickName: app.globalData.userInfo.nickName;
           wx.setStorageSync("LS_userInfo", app.globalData.userInfo);
           var that = this;
           var myObj = [

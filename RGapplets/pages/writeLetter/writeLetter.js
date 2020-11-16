@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-24 15:40:58
- * @LastEditTime: 2020-11-15 12:26:39
+ * @LastEditTime: 2020-11-16 23:10:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\writeLetter\writeLetter.js
@@ -30,7 +30,7 @@ Page({
       capsuleHeight: '',  // 右上角胶囊高度
       capsuleTop: '',  // 右上角胶囊上边界坐标
       capsuleBottom: '',  // 右上角胶囊下边界坐标
-      letterSrc: '',
+      letterSrc: 'http://47.112.101.204/paper/02.png',
       envelopeId: 0,  // 样式 id
       letterTitle: '',  // 标题
       letterContent: '',  // 正文

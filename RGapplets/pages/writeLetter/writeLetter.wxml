@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-10-24 15:40:58
- * @LastEditTime: 2020-11-14 16:52:45
+ * @LastEditTime: 2020-11-16 23:39:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\writeLetter\writeLetter.wxml
@@ -32,10 +32,11 @@
         bindinput="getContet"
       ></textarea>
     </view>
-    <view class="send-btn-box">
-      <view class="save-btn send-btn" bindtap="saveMsg">保存</view>
-      <view class="send-btn" bindtap="sendMsg">{{btnText}}</view>
-    </view>
+  </view>
+
+  <view class="send-btn-box">
+    <view class="save-btn send-btn" bindtap="saveMsg">保存</view>
+    <view class="send-btn" bindtap="sendMsg">{{btnText}}</view>
   </view>
 
   <van-dialog id="van-dialog" />

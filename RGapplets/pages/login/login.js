@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-27 11:00:19
- * @LastEditTime: 2020-11-13 16:49:59
+ * @LastEditTime: 2020-11-17 00:17:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RGapplets\pages\login\login.js
@@ -9,7 +9,8 @@
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
 
 import {login} from '../../api/login'
-import {setToken, getToken} from '../../utils/cookie'
+import {insertUserInfo} from '../../api/insertUserInfo'
+import {setToken, getToken, removeToken} from '../../utils/cookie'
 Page({
 
     /**
@@ -39,9 +40,27 @@ Page({
               wx.hideLoading()
               console.log(res);
               if(res.status == 20000){
-                setToken(res.data.loginDTO.token);
-                wx.switchTab({
-                  url: '/pages/homePage/homePage'
+                let token = res.data.loginDTO.token;
+                setToken(token);
+                insertUserInfo({
+                  nickName: userInfo.nickName,
+                  avatarUrl: userInfo.avatarUrl,
+                  gender: userInfo.gender,
+                  country: userInfo.country,
+                  province: userInfo.province,
+                  city: userInfo.city
+                }).then( res => {
+                  console.log(res);
+                  if(res.status == 20000){
+                    wx.switchTab({
+                      url: '/pages/homePage/homePage'
+                    })
+                  } else{
+                    removeToken();
+                    Toast.fail("登录失败");
+                  }
+                }).catch( err => {
+                  console.log(err);
                 })
               } else{
                 Toast.fail('登录失败');
